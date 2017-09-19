@@ -1,0 +1,64 @@
+<!--Depois adicionar Pontuação, Nível e Assunto-->
+<div class="container">
+<router-outlet></router-outlet>
+<h3 class="centralizado">{{titulo}}</h3>
+Nivel de dificuldade : {{nivelDificuldade}} <br><br>
+<div class="card">
+  <div class="card-body">
+      <h6>Aqui estará o enunciado da Questão</h6>
+  </div>
+</div><br>
+<div class="card">
+
+<table class="table table-bordered"> 
+<thead>
+    <tr>
+      <th style="width: 550px;">Entrada</th>
+      <th style="width: 550px;">Saída</th>
+    </tr>
+ </thead>   
+
+  <tr>
+    <td> Entrada1</td>
+    <td> Saída1</td>
+  </tr> 
+
+  <tr>
+    <td> Entrada2</td>
+    <td> Saída2</td>
+  </tr>
+
+  <tr>
+    <td> Entrada3</td>
+    <td> Saída3</td>
+  </tr>
+</table><br>
+</div><br>
+
+  
+<form #meuForm="ngForm">
+<h6>Sua resposta:</h6>
+<textarea rows="15" cols="155" [(ngModel)]="resposta" pInputTextarea required></textarea>
+<button class="btn btn-outline-dark" [disabled]="meuForm.valid" (click)="responder()">Responder</button>
+</form>
+
+
+
+
+
+
+
+  <!-- List group
+  <ul class="list-group">
+    <li class="list-group-item">primeiroRetorno</li>
+    <li class="list-group-item">segundoRetorno</li>
+    <li class="list-group-item">terceiroRetorno</li>
+  </ul>
+  -->
+  <!--<p-rating [(ngModel)]="val"></p-rating>-->
+
+</div><br>
+<!-- ao clicar em responder, abrir uma caixa de texto, ou algo parecido, para o usuário submeter sua resposta-->
+<!--Botão responder/editar de acordo com as permissões do usuário, ao clicar é redirecionado para a tela de inserir questão, com os campos preenchidos-->
+
+<!-- validar a lógica para responder-->

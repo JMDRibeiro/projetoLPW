@@ -1,0 +1,37 @@
+<div class="container">
+
+<h3 class="centralizado">Listar todas as questões</h3><br>
+  <!-- Default panel contents -->
+
+  <router-outlet></router-outlet>
+
+<table class="table" style="width: 1100px;">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th style="width: 900px;">Missão</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let questao of questoes">
+      <th scope="row">1</th>
+      <td routerLink="/visualizar">titulo</td>
+      <td><button class="btn bg-warning text-white" routerLink="/inserir">Editar</button></td>
+      <td><button class="btn bg-danger text-white" (click)="eliminarQuestoes()">X</button></td>
+    </tr>
+  </tbody>
+</table>
+
+  <!-- List group 
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let questao of questoes">
+          primeiroRetorno
+          <button class="btn bg-warning text-white" routerLink="">Editar</button>
+          <button class="btn bg-danger text-white" (click)="eliminarQuestoes()">X</button>
+          </li>
+  </ul>
+  -->
+
+

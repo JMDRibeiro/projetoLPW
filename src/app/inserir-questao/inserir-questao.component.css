@@ -1,0 +1,11 @@
+.input{
+        width: 100%;
+}
+.centralizado{
+    	text-align: center;
+}
+.botaoSalvar{
+        background-color:greenyellow;
+        float:right;
+
+}

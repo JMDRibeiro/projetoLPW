@@ -1,0 +1,48 @@
+<div class="container">
+<router-outlet></router-outlet>
+<h3 class="centralizado">Questões para corrigir </h3>
+    <br>
+    <div style="width: 1500px;" class="container">
+    <table>
+    <thead>
+    <tr>
+      <th style="width: 30px;"></th>
+      <th style="width: 1000px;"></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr class="border" *ngFor="let questaoRespondida of questoeRespondidas">
+        <td></td>
+        <!-- ser "imparcial"-->
+        <td>  
+          <br>      
+            <p-accordion>
+                <p-accordionTab header="{{questaoRespondida}}">
+                  Aqui estará o enunciado da Questão
+                </p-accordionTab>
+            </p-accordion>
+            <div class="card">
+            <div class="card-body">
+                <h6>Aqui estará a resposta do aluno</h6>
+            </div>
+            </div><br>
+            
+              <div><p-radioButton name="group1" value="true" label="Acertou" [(ngModel)]="val1" inputId="opt1"></p-radioButton>   
+                  <p-radioButton name="group1" value="true" label="Errou" [(ngModel)]="val1" inputId="opt1"></p-radioButton><br>
+              </div><br>
+              <button class="btn btn-outline-dark" (click)="addComentario = !addComentario">Add comentário</button>
+              <button class="btn btn-outline-dark">Enviar correção</button><br><br>
+              <form *ngIf="addComentario" #meuForm="ngForm">
+                    <textarea rows="3" cols="135" [(ngModel)]="questaoRespondida.comentario" name="comentario"pInputTextarea></textarea>
+                    <br>
+              </form>
+              </td>   
+        
+      </tr>
+  </tbody>    
+    </table>
+    
+    <br>
+    </div>
+</div>
+    <button type="button" pButton (click)="showInfo()" label="Info" class="">Lá </button>

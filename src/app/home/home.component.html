@@ -1,0 +1,46 @@
+<div class="container">
+  <h4>Seja bem-vindo de volta, Fulando!</h4><br>
+  <div class="row">
+
+    <div style="width: 300px;">
+    <h6>Próximas atividades:</h6>
+    <!-- reduzir o tamanho do calendário-->
+    <!-- marcar atividades no calendário-->
+    <!-- daria trabalho para inserir um módulo de comunicação professor/aluno  ou de comentário nas questões?-->
+    <!-- teria como criar umas msg de estimulo ao usuário?
+          Ex.: "Se liga, faz muito tempo que vc não responde nenhuma questão!"-->
+   <p-calendar [(ngModel)]="date11" [inline]="true" [showOtherMonths]="true"></p-calendar> 
+    </div>
+
+
+    <div style="width: 500px;">
+    <h5>Veja as principais novidades</h5>
+
+    Avisos em geral enviados pelo professor,
+    etc.
+    </div>
+
+
+    <div style="width: 300px;" class="container">
+    <h6>Ranking Semanal </h6>
+    <table>
+    <thead>
+    <tr>
+      <th style="width: 30px;">#</th>
+      <th style="width: 100px;">Jogador</th>
+      <th style="width: 10px;">Pontos</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let jogador of jogadores">
+        <td>{{jogador.pos}}°</td>
+        <td>{{jogador.name}}</td>
+        <td>{{jogador.pontos}}</td>
+      </tr>
+  </tbody>    
+    </table>
+    
+    <br>
+    </div>
+  </div>
+</div>
