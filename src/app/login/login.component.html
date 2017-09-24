@@ -1,28 +1,10 @@
-    <!-- por o p-menubar  ou o p-megaMenu no cabeçalho (primeNg)-->
 <div class="container" style="width: 600px;">
 <router-outlet></router-outlet>
-<h2>Entre e faça hoje seu RPG!</h2><br>
+<h2><strong>Entre e faça hoje seu RPG!</strong></h2><br>
 <form #meuForm="ngForm" class="form-group">
     <input type="text"class="input form-control" placeholder="Email ou Nickname" type="text" name="nomeCompleto" [(ngModel)] = "login" required><br>
     <input type="text"class="input form-control" placeholder="Senha" type="text" name="titulo" [(ngModel)] = "senha" required><br>
-    <button class="btn btn-outline-dark" [disabled]="!(meuForm.valid && this.entrar)" (click)="verficarUsuario()"routerLink="/home">Entre</button>
+    <button class="btn btn-success" [disabled]="!(meuForm.valid && this.entrar)" (click)="verficarUsuario()" routerLink="/home">Entre</button>
 </form>
-Ainda não está cadastrado? Clique <a href="cadastrar">aqui</a> e cadastre-se!
-
-
-<!--
-<div class="container">
-<router-outlet></router-outlet>
-
-<form #meuForm="ngForm" class="form-group">
-Login :<br>
-  Para modificar a cor quando não preenchido = border border-warning, border border-danger
-<input #login="ngModel" type="text"class="input form-control" type="text" name="titulo" [(ngModel)]="questao.titulo" required>
-Senha :<br>
-<input type="password" pPassword />
- 
-<button class="btn btn-outline-dark" [disabled]="!meuForm.valid" routerLink="inserir">Entrar</button>
-</form>
-
+Ainda não está cadastrado? Clique <a href="/cadastro">aqui</a> e cadastre-se!
 </div>
--->

@@ -1,12 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { FormsModule} from '@angular/forms';
-
+import { FormularioComponent } from './formulario/formulario.component';
+import { FormularioCadastroComponent } from './formulario-cadastro/formulario-cadastro.component';
+import { HomepageComponent } from './homepage/homepage.component';
 import {rota} from './app.rotas';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { CalendarModule} from 'primeng/primeng';
-import {CheckboxModule} from 'primeng/primeng';
 
 import {AccordionModule} from 'primeng/primeng';
 import {MenuItem} from 'primeng/primeng';
@@ -19,63 +18,51 @@ import {TabMenuModule} from 'primeng/primeng';
 import { InserirQuestaoComponent } from './inserir-questao/inserir-questao.component';
 import { CabecalhoComponent } from './cabecalho/cabecalho.component';
 import { ListarTodasQuestoesComponent } from './listar-todas-questoes/listar-todas-questoes.component';
+import { CorrigirQuestoesComponent } from './corrigir-questoes/corrigir-questoes.component';
 import { HomeComponent } from './home/home.component';
 import { CriarListaQuestoesComponent } from './criar-lista-questoes/criar-lista-questoes.component';
 import { LoginComponent } from './login/login.component';
 import { ResponderQuestaoComponent } from './responder-questao/responder-questao.component';
-import { CadastroComponent } from './cadastro/cadastro.component';
+import { CadastrarComponent } from './cadastrar/cadastrar.component';
 import { PerfilComponent } from './perfil/perfil.component';
-import { CorrigirQuestoesComponent } from './corrigir-questoes/corrigir-questoes.component';
-import {RadioButtonModule} from 'primeng/primeng';
-import {MenubarModule} from 'primeng/primeng';
-import {ListboxModule} from 'primeng/primeng';
-import { QuestaoService } from './questao.service';
-import {DataTableModule,SharedModule} from 'primeng/primeng';
-import {DialogModule} from 'primeng/primeng';
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    FormularioComponent,
+    FormularioCadastroComponent,
+    HomepageComponent,
     InserirQuestaoComponent,
     CabecalhoComponent,
     ListarTodasQuestoesComponent,
+    CorrigirQuestoesComponent,
     HomeComponent,
     CriarListaQuestoesComponent,
     LoginComponent,
     ResponderQuestaoComponent,
-    CadastroComponent,
+    CadastrarComponent,
     PerfilComponent,
-    CorrigirQuestoesComponent,
     
     
   ],
   imports: [
-    DialogModule,
-    DataTableModule,
-    SharedModule,
-    ListboxModule,
-    MenubarModule,
-    RadioButtonModule,
-    CalendarModule,
     BrowserModule,
-    CheckboxModule,
     AccordionModule,
     ButtonModule,
     PasswordModule,
     PanelMenuModule,
-    FormsModule,
     BrowserAnimationsModule,
     rota,
-    TabMenuModule,
-    MenubarModule
+    TabMenuModule
 
     
     
     
   ],
-  providers: [QuestaoService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

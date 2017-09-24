@@ -1,6 +1,6 @@
 <div class="container">
 <router-outlet></router-outlet>
-<h3 class="centralizado">Inserir Questão</h3>
+<h3 class="centralizado"><strong>Inserir Questão</strong></h3>
 <br>
 <form #meuForm="ngForm" class="form-group">
 <!--Para modificar a cor quando não preenchido = border border-warning, border border-danger-->
@@ -9,18 +9,18 @@
 Digite três retornos esperados :   <br>
 <table>
   <tr>
-    <td><input  style="width: 550px;" placeholder="Entrada do primeiro caso" type="text" class="input form-control" type="text" [(ngModel)]="primeiroRetorno.entrada" required> </td>
-    <td><input  style="width: 550px;" placeholder="Saída do primeiro caso" type="text" class="input form-control" type="text" [(ngModel)]="primeiroRetorno.saida" required ></td>
+    <td><input name="primeiroRetorno.entrada" style="width: 550px;" placeholder="Entrada do primeiro caso" type="text" class="input form-control" type="text" [(ngModel)]="primeiroRetorno.entrada" required> </td>
+    <td><input name="primeiroRetorno.saida" style="width: 550px;" placeholder="Saída do primeiro caso" type="text" class="input form-control" type="text" [(ngModel)]="primeiroRetorno.saida" required ></td>
   </tr> 
 
   <tr>
-    <td><input  placeholder="Entrada do segundo caso" type="text" class="input form-control" type="text" [(ngModel)]="segundoRetorno.entrada" > </td>
-    <td><input  placeholder="Saída do segundo caso" type="text" class="input form-control" type="text" [(ngModel)]="segundoRetorno.saida" ></td>
+    <td><input name="segundoRetorno.entrada" placeholder="Entrada do segundo caso" type="text" class="input form-control" type="text" [(ngModel)]="segundoRetorno.entrada" > </td>
+    <td><input name="segundoRetorno.saida" placeholder="Saída do segundo caso" type="text" class="input form-control" type="text" [(ngModel)]="segundoRetorno.saida" ></td>
   </tr>
 
   <tr>
-    <td><input  placeholder="Entrada do terceiro caso" type="text" class="input form-control" type="text" [(ngModel)]="terceiroRetorno.entrada"> </td>
-    <td><input  placeholder="Saída do terceiro caso" type="text" class="input form-control" type="text" [(ngModel)]="terceiroRetorno.saida"></td>
+    <td><input name="terceiroRetorno.entrada" placeholder="Entrada do terceiro caso" type="text" class="input form-control" type="text" [(ngModel)]="terceiroRetorno.entrada"> </td>
+    <td><input name="terceiroRetorno.saida" placeholder="Saída do terceiro caso" type="text" class="input form-control" type="text" [(ngModel)]="terceiroRetorno.saida"></td>
   </tr>
 </table><br>
 
@@ -35,7 +35,8 @@ Selecione o nivel de dificuldade:
 <br><br>
 <input  placeholder="Qual seria a dica para responder a Questão" type="text" class="input form-control"  type="text" name="dica" [(ngModel)]="questao.dica" required><br>
 <!--Quando a Questão estiver completa, mudar a cor dos botões para verde -->
-<button class="btn btn-outline-dark" [disabled]="!meuForm.valid" (click)="salvar()">Salvar Questao</button>
+<button class="btn btn-success" [disabled]="!meuForm.valid" (click)="salvar()">Salvar Questao</button>
 
 </form>
 </div>
+ 

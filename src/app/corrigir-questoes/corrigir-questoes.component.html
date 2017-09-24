@@ -1,3 +1,59 @@
+<!--Depois adicionar Pontuação, Nível e Assunto-->
+<div class="container">
+<router-outlet></router-outlet>
+<h4 class="text-center	"><strong> Aqui estará o título</strong></h4>
+<strong>Nivel de dificuldade : {{nivelDificuldade}} X </strong><br><br>
+<div class="card">
+  <div class="card-body">
+      <h5>Aqui estará o enunciado da Questão</h5>
+  </div>
+</div><br>
+
+<table class="table table-bordered"> 
+<thead>
+    <tr>
+      <th style="width: 550px;" class="text-center">Entrada</th>
+      <th style="width: 550px;" class="text-center">Saída</th>
+    </tr>
+ </thead>   
+
+  <tr>
+    <td> Entrada1</td>
+    <td> Saída1</td>
+  </tr> 
+
+  <tr>
+    <td> Entrada2</td>
+    <td> Saída2</td>
+  </tr>
+
+  <tr>
+    <td> Entrada3</td>
+    <td> Saída3</td>
+  </tr>
+</table>
+  
+<div>
+<h5><strong>Resposta do aluno:</strong></h5>
+  <div class="card">
+  <div class="card-body">
+      <h5>{{resposta}}</h5>
+  </div>
+</div><br> 
+</div>
+
+<div><p-radioButton name="group1" value="true" label="Acertou" [(ngModel)]="val1" inputId="opt1"></p-radioButton>   
+                  <p-radioButton name="group1" value="true" label="Errou" [(ngModel)]="val1" inputId="opt1"></p-radioButton><br>
+</div><br>
+              <!--<button class="btn btn-warning" (click)=""><h5>Add comentário</h5></button>-->
+              <button class="btn btn-success"><h5>Enviar correção</h5></button><br><br>
+              <form *ngIf="addComentario" #meuForm="ngForm">
+                     <textarea rows="5" cols="155" [(ngModel)]="questaoRespondida.comentario" name="comentario"pInputTextarea></textarea>
+                    <br>
+              </form>
+</div>
+  
+<!--
 <div class="container">
 <router-outlet></router-outlet>
 <h3 class="centralizado">Questões para corrigir </h3>
@@ -13,7 +69,7 @@
   <tbody>
       <tr class="border" *ngFor="let questaoRespondida of questoeRespondidas">
         <td></td>
-        <!-- ser "imparcial"-->
+        ser "imparcial"
         <td>  
           <br>      
             <p-accordion>
@@ -46,3 +102,4 @@
     </div>
 </div>
     <button type="button" pButton (click)="showInfo()" label="Info" class="">Lá </button>
+-->

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Usuario} from '../models/Usuario';
+import { UsuarioService } from './../usuario-service.service';
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
@@ -8,17 +9,16 @@ import {Usuario} from '../models/Usuario';
 export class CadastroComponent implements OnInit {
 
   usuario : Usuario;
-  constructor() { }
+  constructor(private usuarioService:UsuarioService) { }
 
   ngOnInit() {
     this.usuario = new Usuario();
   }
 
   cadastrarUsuario(){
-    alert(`1.Vai disparar um insert do usuário no Banco 
-           2.Mensagem confirmando cadastro
-           3. Transição para a tela inicial
-    `);
+    this.usuarioService.insert(this.usuario);
+    console.log("Cadastrado!")
+    
   }
 
 }

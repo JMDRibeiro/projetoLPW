@@ -5,11 +5,9 @@ export class Questao{
     enunciado : String;
     dica : String;
 	retornosEsperados = [
-		{entrada:"", saida:""}
+		{entrada:"", saida:""},{entrada:"", saida:""},{entrada:"", saida:""}
 	];
-    //retornosEsperados = [
-    //{entrada :"Entrada de exemplo", saida:"Retorno Esperado"},
-    //];
+    
 	titulo : String;
 
 	/*
@@ -33,5 +31,16 @@ export class Questao{
 		
 	}
 
+	imprimirQuestao(){
+		let retorno : String = "";
+		retorno+=this.id + "***" +this.titulo+"/"+this.nivelDificuldade+"\n";
+		retorno+=this.enunciado+"\n";
+		retorno+=this.dica+"\n"
+		retorno+=this.retornosEsperados[0].entrada+"//"+this.retornosEsperados[0].saida+"\n";
+		retorno+=this.retornosEsperados[1].entrada+"//"+this.retornosEsperados[1].saida+"\n";
+		retorno+=this.retornosEsperados[2].entrada+"//"+this.retornosEsperados[2].saida+"\n";
+		return retorno;
+	}
 	
 }
+

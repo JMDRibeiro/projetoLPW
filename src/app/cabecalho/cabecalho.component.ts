@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {MenuItem} from 'primeng/primeng';
+import {TabMenuModule, MenuItem} from 'primeng/primeng';
 
 @Component({
-  selector: 'cabecalho',
+  selector: 'app-cabecalho',
   templateUrl: './cabecalho.component.html',
   styleUrls: ['./cabecalho.component.css']
 })
@@ -10,33 +10,17 @@ export class CabecalhoComponent implements OnInit {
 
   constructor() { }
 
-   items;
+  items: MenuItem[];
 
-        ngOnInit() {
-        this.items = [
-            {
-                label: 'Missões',
-                destino : '/home'
-                /*
-                items: [
-                    {label: 'Inserir'},
-                    {label: 'Listar-Todas'}
-                ]
-                */
-            },
-
-            {
-                label: 'Perfil',
-                destino: ''
-            },
-            {
-                label: 'Materiais',
-            },
-            {
-                label: 'Mensagens',
-            },
-
-
+   ngOnInit() {
+           this.items = [
+            {label: 'Missões', routerLink:['/listar-todas'] },
+            {label: 'Atividades', icon: 'fa-calendar',routerLink:['/home']},
+            {label: 'Criar campeonato', icon: 'fa-calendar',routerLink:['/criar-lista']},
+            {label: 'Materiais', icon: 'fa-book',routerLink:['/login']},
+            {label: 'Perfil', icon: 'fa-support',routerLink:['/perfil']},
+            {label: 'Fale conosco', icon: 'fa-twitter',routerLink:['/corrigir']}
         ];
     }
+
 }

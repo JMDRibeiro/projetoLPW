@@ -6,9 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./corrigir-questoes.component.css']
 })
 export class CorrigirQuestoesComponent implements OnInit {
-questoeRespondidas:String[] = ["aa","bb","cc"];
-addComentario : boolean = false;
-  constructor() { }
+
+constructor() { }
 
   ngOnInit() {
   }

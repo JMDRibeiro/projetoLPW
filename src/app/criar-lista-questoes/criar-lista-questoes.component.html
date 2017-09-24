@@ -1,6 +1,6 @@
 <div class="container">
 <router-outlet></router-outlet>
-<h3 class="centralizado">Crie Lista de Questões</h3>
+<h3 class="text-center	"><strong>Crie sua lista de Questões</strong></h3>
 <br>
 <form #meuForm="ngForm" class="form-group">
 
@@ -8,6 +8,7 @@
 <input  placeholder=" Nome da Lista das Questões "type="text"class="input form-control" type="text" name="titulo" [(ngModel)]="titulo" required>
 <br>
 
+Selecione as questões : 
 <table class="table" style="width: 1100px;">
   <thead>
     <tr>
@@ -19,9 +20,9 @@
   </thead>
   <tbody>
     <tr *ngFor="let questao of questoes" class="{{cor}}">
-      <th scope="row">1</th>
-      <td >titulo</td>
-      <p-checkbox name="groupname" value="valquestao.id" [(ngModel)]="selectedValues"></p-checkbox>
+      <th scope="row">{{questao.id}}</th>
+      <td >{{questao.titulo}}</td>
+        <div class="ui-g-12"><p-checkbox name="{{questao.id}}" value="{{questao.id}}" label="" [(ngModel)]="selectedQuestions" inputId="{{questao.id}}"></p-checkbox></div>
        <!-- no lugar deste selecionar seria melhor  colocar um checkbox?
       <td><button class="btn bg-warning text-white" (click)=mudarCor()>Selecionar</button></td>-->
     </tr>
@@ -33,20 +34,19 @@
   <div class="row">
     <div class="col ">
     Disponível a partir de :
-    <br><p-calendar name="calendar"  [(ngModel)]="value" [showTime]="true" required></p-calendar>
+    <br><p-calendar name="calendar"  [(ngModel)]="startDate" [showTime]="true" required></p-calendar>
     </div>
     <div class="col ">
     Disponível até :
-     <br><p-calendar name="calendar"  [(ngModel)]="value" [showTime]="true" required></p-calendar>
+     <br><p-calendar name="calendar"  [(ngModel)]="deadLine" [showTime]="true" required></p-calendar>
     </div>
   </div>
 </div>
 <br>
-Selecione as questões : 
 
 <br><br>
 
-<button class="btn btn-outline-dark" [disabled]="!meuForm.valid" (click)="salvar()">Salvar Lista</button>
+<button class="btn btn-success" [disabled]="!meuForm.valid" (click)="salvar()">Salvar Lista</button>
 </form>
 </div>
 
