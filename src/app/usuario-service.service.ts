@@ -11,7 +11,7 @@ export class UsuarioService {
       this.id++;
       usuario.id = this.id;
       this.usuarios.push(usuario);
-      console.log("Inserção efetuada!");
+      console.log(usuario);
   }
   listAll(){
     console.log("Listando todos os Usuários> Total :" + this.usuarios.length)
@@ -37,6 +37,42 @@ export class UsuarioService {
           }
       }
       return posicao;
+  }
+
+  getUsuarioByLogin(usuario:Usuario){
+    
+    let posicao:number = -1;
+      for(let i:number=0;i<this.usuarios.length;i++){
+          if(usuario.login == this.usuarios[i].login){
+            posicao = i;
+          }
+      }
+    
+    usuario = this.usuarios[posicao];
+    return usuario;
+  }
+
+  getById(usuario:Usuario){
+    
+    let posicao:number = -1;
+      for(let i:number=0;i<this.usuarios.length;i++){
+          if(usuario.id == this.usuarios[i].id){
+            posicao = i;
+          }
+      }
+    
+    usuario = this.usuarios[posicao];
+    return usuario;
+  }
+
+  autenticarUsuario(usuario:Usuario){
+    let podeLogar:boolean = false;  
+    for(let i:number=0;i<this.usuarios.length;i++){
+        if(this.usuarios[i].login==usuario.login && this.usuarios[i].senha==usuario.senha){
+            podeLogar = true;
+        }
+    }
+    return podeLogar;
   }
 
 }

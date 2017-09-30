@@ -61,7 +61,7 @@ export class ListarTodasQuestoesComponent implements OnInit {
     //this.questaoService.insert(this.questao3);
    
     this.questoes = this.questaoService.listAll();
-    
+
   }
 
    showDialogToAdd() {

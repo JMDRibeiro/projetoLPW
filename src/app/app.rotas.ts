@@ -22,6 +22,8 @@ const APP_ROTAS:Routes = [
     {path: 'cadastro' , component: CadastroComponent},
     {path: 'criar-lista' , component: CriarListaQuestoesComponent},
     {path: 'home' , component: HomeComponent},
+    {path: 'home/:id' , component: HomeComponent},
+    {path: 'corrigir/:id' , component: CorrigirQuestoesComponent},
     {path: 'perfil' , component: PerfilComponent},
     {path: 'corrigir' , component: CorrigirQuestoesComponent},
     //{path: '' , component: InserirQuestaoComponent}

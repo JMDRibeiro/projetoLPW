@@ -1,6 +1,10 @@
+<div style= "margin-bottom: -5px" class="jumbotron bg-danger text-white jumbotron-fluid">
+<h1 class="text-center"><strong>RPG Creator</strong></h1>
+<h3 class="text-center"><code>Programar, Jogar e Estudar</code></h3>
+</div>
 <div class="container" style="width: 600px;">
 <router-outlet></router-outlet>
-<h2>Não perca tempo, faça hoje seu RPG!</h2><br>
+<h2><strong>Não perca tempo, faça hoje seu RPG!</strong></h2><br>
 <form #meuForm="ngForm" class="form-group">
     <input type="text"class="input form-control" placeholder="Nome Completo" type="text" name="nomeCompleto" [(ngModel)] = "this.usuario.nomeCompleto" required><br>
     <input type="text"class="input form-control" placeholder="Nickname" type="text" name="titulo" [(ngModel)] = "this.usuario.nomeUsuario" required><br>
