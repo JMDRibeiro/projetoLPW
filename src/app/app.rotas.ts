@@ -16,6 +16,7 @@ import {ModuleWithProviders} from '@angular/core'
 const APP_ROTAS:Routes = [
     {path: 'responder' , component: ResponderQuestaoComponent},
     {path: 'inserir' , component: InserirQuestaoComponent},
+    {path: 'editar/:id' , component: InserirQuestaoComponent},
     {path: '' , component: LoginComponent},
     {path: 'listar-todas' , component: ListarTodasQuestoesComponent},
     {path: 'login' , component: LoginComponent},
@@ -23,7 +24,6 @@ const APP_ROTAS:Routes = [
     {path: 'criar-lista' , component: CriarListaQuestoesComponent},
     {path: 'home' , component: HomeComponent},
     {path: 'home/:id' , component: HomeComponent},
-    {path: 'corrigir/:id' , component: CorrigirQuestoesComponent},
     {path: 'perfil' , component: PerfilComponent},
     {path: 'corrigir' , component: CorrigirQuestoesComponent},
     //{path: '' , component: InserirQuestaoComponent}

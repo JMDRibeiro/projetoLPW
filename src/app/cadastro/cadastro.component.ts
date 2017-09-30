@@ -29,6 +29,10 @@ export class CadastroComponent implements OnInit {
   showSuccess() {
         this.msgs = [];
         this.msgs.push({severity:'success', summary:'Cadastrado com sucesso!', detail:'Seja bem-vindo ao RPG Creator!'});
-    }
+  }
+
+  jaEstaCadastrado(){
+    
+  }
 
 }

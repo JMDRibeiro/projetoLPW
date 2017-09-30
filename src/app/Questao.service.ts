@@ -83,4 +83,17 @@ export class QuestaoService {
       return posicao;
   }
 
+  getById(questao:Questao){
+    
+    let posicao:number = -1;
+      for(let i:number=0;i<this.questoes.length;i++){
+          if(questao.id == this.questoes[i].id){
+            posicao = i;
+          }
+      }
+    
+    questao = this.questoes[posicao];
+    return questao;
+  }
+
 }

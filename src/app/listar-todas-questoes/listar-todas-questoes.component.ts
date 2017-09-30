@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Questao  } from '../models/Questao';
 import { QuestaoService  } from '../questao.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'listar-todas-questoes',
   templateUrl: './listar-todas-questoes.component.html',
@@ -19,7 +21,7 @@ export class ListarTodasQuestoesComponent implements OnInit {
   questaoSelecionada: Questao;
   novaQuestao : boolean;
 
-  constructor(private questaoService:QuestaoService) { }
+  constructor(private questaoService:QuestaoService,private router: Router) { }
 
   ngOnInit() {
     this.questao1.titulo = "Bazinga!";
@@ -95,7 +97,7 @@ export class ListarTodasQuestoesComponent implements OnInit {
     onRowSelect(event) {
         this.novaQuestao = false;
         this.questao = this.cloneCar(event.data);
-        this.displayDialog = true;
+        this.router.navigate(['/editar',this.questao.id]);
     }
     
     cloneCar(c: Questao): Questao {

@@ -3,6 +3,7 @@ import {Questao} from '../models/Questao';
 import {QuestaoService} from '../questao.service';
 import {Message} from 'primeng/components/common/api';
 import {MessageService} from 'primeng/components/common/messageservice';
+import { ActivatedRoute} from '@angular/router'
 
 @Component({
   selector: 'inserir-questao',
@@ -15,11 +16,17 @@ export class InserirQuestaoComponent implements OnInit {
   questao = new Questao;
   msgs: Message[] = [];
 
-  constructor(private questaoService : QuestaoService, private messageService: MessageService) { }
+  constructor(private questaoService : QuestaoService, private messageService: MessageService,private route:ActivatedRoute) { 
+      this.questao.id = this.route.snapshot.params['id'];
+      this.questao = this.questaoService.getById(this.questao);
+      console.log(this.questao);
+      if(this.questao == undefined){
+          this.questao = new Questao();
+      }
+  }
 
   ngOnInit() {
-   this.questao = new Questao();
-   
+    
   }
 
   salvar(){ 
