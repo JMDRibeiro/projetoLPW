@@ -5,7 +5,10 @@
     <input type="text"class="input form-control" placeholder="Nome Completo" type="text" name="nomeCompleto" [(ngModel)] = "this.usuario.nomeCompleto" required><br>
     <input type="text"class="input form-control" placeholder="Nickname" type="text" name="titulo" [(ngModel)] = "this.usuario.nomeUsuario" required><br>
     <input type="text"class="input form-control" placeholder="Email" type="text" name="enunciado" [(ngModel)] = "this.usuario.email" required><br> 
-    <input type="text"class="input form-control" placeholder="Senha" type="text" name="enunciado" [(ngModel)] = "this.usuario.senha" required> <br>
+    <input type="text"class="input form-control" placeholder="Login" type="text" name="login" [(ngModel)] = "this.usuario.login" required> <br>
+    <input type="text"class="input form-control" placeholder="Senha" type="text" name="senha" [(ngModel)] = "this.usuario.senha" required> <br>
     <button class="btn btn-success" [disabled]="!meuForm.valid" (click)="cadastrarUsuario()" routerLink="/home">Cadastrar-se</button>
 </form>
+<p-growl [(value)]="msgs"></p-growl>
+
 </div>

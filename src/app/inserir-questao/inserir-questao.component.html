@@ -9,18 +9,18 @@
 Digite três retornos esperados :   <br>
 <table>
   <tr>
-    <td><input name="primeiroRetorno.entrada" style="width: 550px;" placeholder="Entrada do primeiro caso" type="text" class="input form-control" type="text" [(ngModel)]="primeiroRetorno.entrada" required> </td>
-    <td><input name="primeiroRetorno.saida" style="width: 550px;" placeholder="Saída do primeiro caso" type="text" class="input form-control" type="text" [(ngModel)]="primeiroRetorno.saida" required ></td>
+    <td><input name="primeiroRetorno.entrada" style="width: 550px;" placeholder="Entrada do primeiro caso" type="text" class="input form-control" type="text" [(ngModel)]="questao.retornosEsperados[0].entrada" required> </td>
+    <td><input name="primeiroRetorno.saida" style="width: 550px;" placeholder="Saída do primeiro caso" type="text" class="input form-control" type="text" [(ngModel)]="questao.retornosEsperados[0].saida" required ></td>
   </tr> 
 
   <tr>
-    <td><input name="segundoRetorno.entrada" placeholder="Entrada do segundo caso" type="text" class="input form-control" type="text" [(ngModel)]="segundoRetorno.entrada" > </td>
-    <td><input name="segundoRetorno.saida" placeholder="Saída do segundo caso" type="text" class="input form-control" type="text" [(ngModel)]="segundoRetorno.saida" ></td>
+    <td><input name="segundoRetorno.entrada" placeholder="Entrada do segundo caso" type="text" class="input form-control" type="text" [(ngModel)]="questao.retornosEsperados[1].entrada" > </td>
+    <td><input name="segundoRetorno.saida" placeholder="Saída do segundo caso" type="text" class="input form-control" type="text" [(ngModel)]="questao.retornosEsperados[1].saida" ></td>
   </tr>
 
   <tr>
-    <td><input name="terceiroRetorno.entrada" placeholder="Entrada do terceiro caso" type="text" class="input form-control" type="text" [(ngModel)]="terceiroRetorno.entrada"> </td>
-    <td><input name="terceiroRetorno.saida" placeholder="Saída do terceiro caso" type="text" class="input form-control" type="text" [(ngModel)]="terceiroRetorno.saida"></td>
+    <td><input name="terceiroRetorno.entrada" placeholder="Entrada do terceiro caso" type="text" class="input form-control" type="text" [(ngModel)]="questao.retornosEsperados[2].entrada"> </td>
+    <td><input name="terceiroRetorno.saida" placeholder="Saída do terceiro caso" type="text" class="input form-control" type="text" [(ngModel)]="questao.retornosEsperados[2].saida"></td>
   </tr>
 </table><br>
 
@@ -35,7 +35,9 @@ Selecione o nivel de dificuldade:
 <br><br>
 <input  placeholder="Qual seria a dica para responder a Questão" type="text" class="input form-control"  type="text" name="dica" [(ngModel)]="questao.dica" required><br>
 <!--Quando a Questão estiver completa, mudar a cor dos botões para verde -->
-<button class="btn btn-success" [disabled]="!meuForm.valid" (click)="salvar()">Salvar Questao</button>
+<button class="btn btn-success" style="float:left" [disabled]="!meuForm.valid" (click)="salvar()">Salvar e Criar nova</button>
+<button class="btn btn-success" style="float:right" [disabled]="!meuForm.valid" routerLink="/listar-todas"(click)="salvar()">Salvar e Listar</button>
+<p-growl [(value)]="msgs"></p-growl>
 
 </form>
 </div>

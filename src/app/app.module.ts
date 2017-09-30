@@ -32,8 +32,9 @@ import {ListboxModule} from 'primeng/primeng';
 import { QuestaoService } from './questao.service';
 import {DataTableModule,SharedModule} from 'primeng/primeng';
 import {DialogModule} from 'primeng/primeng';
-
-
+import {GrowlModule} from 'primeng/primeng';
+import {UsuarioService} from './usuario-service.service';
+import {MessageService} from 'primeng/components/common/messageservice';
 
 @NgModule({
   declarations: [
@@ -69,13 +70,10 @@ import {DialogModule} from 'primeng/primeng';
     BrowserAnimationsModule,
     rota,
     TabMenuModule,
-    MenubarModule
-
-    
-    
-    
+    MenubarModule,
+    GrowlModule   
   ],
-  providers: [QuestaoService],
+  providers: [QuestaoService,UsuarioService,MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

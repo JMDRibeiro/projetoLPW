@@ -30,7 +30,7 @@ export class UsuarioService {
   }
 
   findUsuario(usuario:Usuario){
-      let posicao:number = 0;
+      let posicao:number = -1;
       for(let i:number=0;i<this.usuarios.length;i++){
           if(usuario.id == this.usuarios[i].id){
             posicao = i;

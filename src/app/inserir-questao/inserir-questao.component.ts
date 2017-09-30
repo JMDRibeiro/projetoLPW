@@ -1,47 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 import {Questao} from '../models/Questao';
 import {QuestaoService} from '../questao.service';
+import {Message} from 'primeng/components/common/api';
+import {MessageService} from 'primeng/components/common/messageservice';
+
 @Component({
   selector: 'inserir-questao',
   templateUrl: './inserir-questao.component.html',
-  styleUrls: ['./inserir-questao.component.css']
+  styleUrls: ['./inserir-questao.component.css'],
+  providers: [MessageService]
+
 })
 export class InserirQuestaoComponent implements OnInit {
   questao = new Questao;
-  retornosEsperados = [];
-  constructor(private questaoService : QuestaoService) { }
+  msgs: Message[] = [];
+
+  constructor(private questaoService : QuestaoService, private messageService: MessageService) { }
 
   ngOnInit() {
    this.questao = new Questao();
    
   }
-  //questoes : Questao[];
 
-  
-  primeiroRetorno = [ 
-    {entrada: "entrada",saida:"saida"}  
-  ];
-  segundoRetorno = [ 
-    {entrada: "entrada",saida:"saida"}  
-  ];
-  terceiroRetorno = [ 
-    {entrada: "entrada",saida:"saida"}  
-  ];
- 
-  limparCampos(){
-   //Como faço isso?
-
-  }
-  salvar(){
-      this.retornosEsperados.push(this.primeiroRetorno);
-      this.retornosEsperados.push(this.segundoRetorno);
-      this.retornosEsperados.push(this.terceiroRetorno);    
-      this.questao.retornosEsperados = this.retornosEsperados;   
+  salvar(){ 
       this.questaoService.insert(this.questao);
       //alert(this.questaoService.listAll().length);    
       //alert(this.questao.imprimirQuestao());
-      alert("Salva com sucesso!");
-      this.limparCampos();
+      this.showSuccess();
+      this.questao = new Questao();
   }
+
+  showSuccess() {
+        this.msgs = [];
+        this.msgs.push({severity:'success', summary:'Questão inserida com sucesso!', detail:' '});
+    }
+
 
 }
