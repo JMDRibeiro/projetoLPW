@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Questao } from '../models/Questao';
 import {QuestaoService} from '../questao.service';
-
+import { ListaQuestoes} from '../models/ListaQuestoes';
 @Component({
   selector: 'app-criar-lista-questoes',
   templateUrl: './criar-lista-questoes.component.html',
@@ -18,5 +18,7 @@ export class CriarListaQuestoesComponent implements OnInit {
   ngOnInit() {
     this.questoes = this.questaoService.listAll();
   }
-  
+  salvar(){
+    alert(this.selectedQuestions.length);
+  }
 }

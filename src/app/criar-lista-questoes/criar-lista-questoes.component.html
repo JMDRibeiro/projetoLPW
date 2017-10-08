@@ -23,7 +23,9 @@ Selecione as questões :
     <tr *ngFor="let questao of questoes" class="{{cor}}">
       <th scope="row">{{questao.id}}</th>
       <td >{{questao.titulo}}</td>
-        <div class="ui-g-12"><p-checkbox name="{{questao.id}}" value="{{questao.id}}" label="" [(ngModel)]="selectedQuestions" inputId="{{questao.id}}"></p-checkbox></div>
+        <div class="ui-g-12">
+          <p-checkbox name="{{questao.id}}" value="{{questao.id}}" label="" [(ngModel)]="selectedQuestions" inputId="{{questao.id}}"></p-checkbox>
+          </div>
        <!-- no lugar deste selecionar seria melhor  colocar um checkbox?
       <td><button class="btn bg-warning text-white" (click)=mudarCor()>Selecionar</button></td>-->
     </tr>
