@@ -7,7 +7,7 @@ import {rota} from './app.rotas';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CalendarModule} from 'primeng/primeng';
 import {CheckboxModule} from 'primeng/primeng';
-
+import {DropdownModule} from 'primeng/primeng';
 import {AccordionModule} from 'primeng/primeng';
 import {MenuItem} from 'primeng/primeng';
 import {ButtonModule} from 'primeng/primeng';
@@ -71,7 +71,8 @@ import {MessageService} from 'primeng/components/common/messageservice';
     rota,
     TabMenuModule,
     MenubarModule,
-    GrowlModule   
+    GrowlModule,
+    DropdownModule   
   ],
   providers: [QuestaoService,UsuarioService,MessageService],
   bootstrap: [AppComponent]

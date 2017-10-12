@@ -3,11 +3,12 @@
 <!--Depois adicionar Pontuação, Nível e Assunto-->
 <div class="container">
 <router-outlet></router-outlet>
-<h4 class="text-center	"><strong> Aqui estará o título</strong></h4>
-<strong>Nivel de dificuldade : {{nivelDificuldade}} </strong><br><br>
+<br>
+<h4 class="text-center"><strong>{{questao.titulo}}</strong></h4>
+<strong>Nivel de dificuldade : {{questao.nivelDificuldade}} </strong><br><br>
 <div class="card">
   <div class="card-body">
-      <h5>Aqui estará o enunciado da Questão</h5>
+      <h5>{{questao.enunciado}}</h5>
   </div>
 </div><br>
 
@@ -42,13 +43,6 @@
 <textarea rows="15" cols="155" [(ngModel)]="resposta" pInputTextarea required></textarea>
 <button class="btn btn-success" [disabled]="!formResposta.valid" (click)="responder()">Responder</button>
 </form>
-
-
-
-
-
-
-
   <!-- List group
   <ul class="list-group">
     <li class="list-group-item">primeiroRetorno</li>

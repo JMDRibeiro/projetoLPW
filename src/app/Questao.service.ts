@@ -44,9 +44,9 @@ export class QuestaoService {
     this.questao3.retornosEsperados[2].entrada = "Entrada3 -  Triângulos";
     this.questao3.retornosEsperados[2].saida = "Saida3 -  Triângulos";
 
-    this.insert(this.questao1); this.insert(this.questao1); this.insert(this.questao1); this.insert(this.questao1);this.insert(this.questao1);
-    this.insert(this.questao2); this.insert(this.questao2); this.insert(this.questao2); this.insert(this.questao2);this.insert(this.questao2);
-    this.insert(this.questao3); this.insert(this.questao3);this.insert(this.questao3);this.insert(this.questao3);this.insert(this.questao3);this.insert(this.questao3);
+    this.insert(this.questao1); 
+    this.insert(this.questao2); 
+    this.insert(this.questao3); 
      
    
   }

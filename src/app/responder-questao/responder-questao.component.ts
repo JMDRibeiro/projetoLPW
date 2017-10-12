@@ -12,10 +12,8 @@ export class ResponderQuestaoComponent implements OnInit {
   questao : Questao = new Questao();
   questaoRespondida : QuestaoRespondida = new QuestaoRespondida();
 
-  constructor(  ) { }
-  
-
-  ngOnInit() {
+  constructor(  ) {
+    this.questao.titulo = "Neste espaço o título da questão.";
     this.questao.enunciado = "Neste espaço aparecerá o enunciado da questão";
     this.questao.nivelDificuldade = 1;
         this.questao.retornosEsperados = [
@@ -23,8 +21,12 @@ export class ResponderQuestaoComponent implements OnInit {
       {entrada :"2a Entrada de exemplo", saida:"2o Retorno Esperado"},
       {entrada :"3a Entrada de exemplo", saida:"3o Retorno Esperado"}
       ];
-    this.questao.titulo = "Neste espaço o título da questão.";
 
+   }
+  
+
+  ngOnInit() {
+    
   }
 
   responder(){

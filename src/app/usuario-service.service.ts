@@ -6,7 +6,26 @@ export class UsuarioService {
   usuarios:Usuario[]=[];
   id : number = 0;
 
-  constructor() { }
+  constructor() { 
+    let professorTeste = new Usuario();
+    let alunoTeste = new Usuario();
+    professorTeste.email =  "leonardo@gmail.com";
+    professorTeste.login = "leosoares";
+    professorTeste.nomeCompleto = "Leonardo Soares e Silva";
+    professorTeste.nomeUsuario = "LSoares";
+    professorTeste.senha = "123";
+    professorTeste.tipo = "professor";
+
+    alunoTeste.email =  "joaoifpe15@gmail.com";
+    alunoTeste.login = "jdr55";
+    alunoTeste.nomeCompleto = "João Marcelo D. R. Sobrinho";
+    alunoTeste.nomeUsuario = "JMDRS";
+    alunoTeste.senha = "123";
+    alunoTeste.tipo = "aluno";
+
+    this.insert(professorTeste);
+    this.insert(alunoTeste);
+  }
  insert(usuario:Usuario){
       this.id++;
       usuario.id = this.id;
@@ -76,3 +95,4 @@ export class UsuarioService {
   }
 
 }
+

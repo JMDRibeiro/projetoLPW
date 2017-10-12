@@ -3,7 +3,7 @@ import {Usuario} from '../models/Usuario';
 import { UsuarioService } from './../usuario-service.service';
 import {MessageService} from 'primeng/components/common/messageservice';
 import {Message} from 'primeng/components/common/api';
-
+import {SelectItem} from 'primeng/primeng';
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
@@ -12,12 +12,18 @@ import {Message} from 'primeng/components/common/api';
 })
 export class CadastroComponent implements OnInit {
   msgs: Message[] = [];
-
+  tiposUsuario:SelectItem[] = [];
   usuario : Usuario;
-  constructor(private usuarioService:UsuarioService) { }
+  constructor(private usuarioService:UsuarioService) {
+    this.usuario = new Usuario();
+    this.tiposUsuario = [];
+    this.tiposUsuario.push({label:'Aluno', value:{id:1, name: 'Aluno', code: 'A'}});
+    this.tiposUsuario.push({label:'Professor', value:{id:2, name: 'Professor', code: 'P'}});
+
+
+   }
 
   ngOnInit() {
-    this.usuario = new Usuario();
   }
 
   cadastrarUsuario(){
