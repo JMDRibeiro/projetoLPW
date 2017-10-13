@@ -15,35 +15,41 @@
 <table class="table table-bordered"> 
 <thead>
     <tr>
-      <th style="width: 550px;" class="text-center">Entrada</th>
-      <th style="width: 550px;" class="text-center">Saída</th>
+      <th style="width: 550px;" class="text-center">{{questao.retornosEsperados[0].entrada}}</th>
+      <th style="width: 550px;" class="text-center">{{questao.retornosEsperados[0].saida}}</th>
     </tr>
  </thead>   
 
   <tr>
-    <td> Entrada1</td>
-    <td> Saída1</td>
+    <td> {{questao.retornosEsperados[0].entrada}}</td>
+    <td> {{questao.retornosEsperados[0].saida}}</td>
   </tr> 
 
   <tr>
-    <td> Entrada2</td>
-    <td> Saída2</td>
+    <td> {{questao.retornosEsperados[1].entrada}}</td>
+    <td> {{questao.retornosEsperados[1].saida}}</td>
   </tr>
 
   <tr>
-    <td> Entrada3</td>
-    <td> Saída3</td>
+    <td> {{questao.retornosEsperados[2].saida}}</td>
+    <td> {{questao.retornosEsperados[2].saida}}</td>
   </tr>
 </table><br>
-<br>
+<strong>Sua resposta:</strong><br>
 
-  
-<form #formResposta="ngForm">
-<h5>Sua resposta:</h5>
-<textarea rows="15" cols="155" [(ngModel)]="resposta" pInputTextarea required></textarea>
-<button class="btn btn-success" [disabled]="!formResposta.valid" (click)="responder()">Responder</button>
+<textarea [(ngModel)]="questaoRespondida.resposta" rows="15" cols="155" pInputTextarea></textarea>
+<button class="btn btn-success" (click)="responder()">Responder</button>
+
+
+  <!--
+    <form #meuForm="ngForm" class="form-group">
+<textarea [(ngModel)]="questaoRespondida.resposta" rows="15" cols="155" pInputTextarea></textarea>
+<button class="btn btn-success" (click)="responder()">Responder</button>
 </form>
-  <!-- List group
+
+    
+    
+     List group
   <ul class="list-group">
     <li class="list-group-item">primeiroRetorno</li>
     <li class="list-group-item">segundoRetorno</li>

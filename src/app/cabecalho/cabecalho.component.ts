@@ -32,7 +32,14 @@ export class CabecalhoComponent implements OnInit {
   
    ngOnInit() {
      //de acordo com o tipo de usuário, determinar qual será o seu Menu
-           this.items = this.menuAluno;
+            this.items = [
+            {label: 'Missões', routerLink:['/listar-todas'] },
+            {label: 'Atividades', icon: 'fa-calendar',routerLink:['/responder']},
+            {label: 'Criar campeonato', icon: 'fa-calendar',routerLink:['/criar-lista']},
+            {label: 'Materiais', icon: 'fa-book',routerLink:['/login']},
+            {label: 'Perfil', icon: 'fa-support',routerLink:['/perfil']},
+            {label: 'Fale conosco', icon: 'fa-twitter',routerLink:['/corrigir']}
+        ];
     }
 
 }

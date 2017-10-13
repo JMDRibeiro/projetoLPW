@@ -13,12 +13,13 @@ import {MenuItem} from 'primeng/primeng';
 import {ButtonModule} from 'primeng/primeng';
 import {PasswordModule} from 'primeng/primeng';
 import {InputTextModule} from 'primeng/primeng';
+import {InputTextareaModule} from 'primeng/primeng';
 import {InputMaskModule} from 'primeng/primeng';
 import {PanelMenuModule} from 'primeng/primeng';
 import {TabMenuModule} from 'primeng/primeng';
 import { InserirQuestaoComponent } from './inserir-questao/inserir-questao.component';
 import { CabecalhoComponent } from './cabecalho/cabecalho.component';
-import { ListarTodasQuestoesComponent } from './listar-todas-questoes/listar-todas-questoes.component';
+import { ListarTodasQuestoesCRUDComponent } from './listar-todas-questoes-crud/listar-todas-questoes-crud.component';
 import { HomeComponent } from './home/home.component';
 import { CriarListaQuestoesComponent } from './criar-lista-questoes/criar-lista-questoes.component';
 import { LoginComponent } from './login/login.component';
@@ -34,14 +35,16 @@ import {DataTableModule,SharedModule} from 'primeng/primeng';
 import {DialogModule} from 'primeng/primeng';
 import {GrowlModule} from 'primeng/primeng';
 import {UsuarioService} from './usuario-service.service';
+import {QuestaoRespondidaService} from './questao-respondida.service';
 import {MessageService} from 'primeng/components/common/messageservice';
+import { ListarQuestoesComponent } from './listar-questoes/listar-questoes.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InserirQuestaoComponent,
     CabecalhoComponent,
-    ListarTodasQuestoesComponent,
+    ListarTodasQuestoesCRUDComponent,
     HomeComponent,
     CriarListaQuestoesComponent,
     LoginComponent,
@@ -49,6 +52,7 @@ import {MessageService} from 'primeng/components/common/messageservice';
     CadastroComponent,
     PerfilComponent,
     CorrigirQuestoesComponent,
+    ListarQuestoesComponent
     
     
   ],
@@ -69,12 +73,13 @@ import {MessageService} from 'primeng/components/common/messageservice';
     FormsModule,
     BrowserAnimationsModule,
     rota,
+    InputTextareaModule,
     TabMenuModule,
     MenubarModule,
     GrowlModule,
     DropdownModule   
   ],
-  providers: [QuestaoService,UsuarioService,MessageService],
+  providers: [QuestaoService,UsuarioService,MessageService,QuestaoRespondidaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
