@@ -38,6 +38,13 @@ import {UsuarioService} from './usuario-service.service';
 import {QuestaoRespondidaService} from './questao-respondida.service';
 import {MessageService} from 'primeng/components/common/messageservice';
 import { ListarQuestoesComponent } from './listar-questoes/listar-questoes.component';
+import { ListarQuestoesRespondidasComponent } from './listar-questoes-respondidas/listar-questoes-respondidas.component';
+import { ListarCorrigidasComponent } from './listar-corrigidas/listar-corrigidas.component';
+import { CorrecaoComponent } from './correcao/correcao.component';
+import { ListasQuestoesCrudComponent } from './listas-questoes-crud/listas-questoes-crud.component';
+import {ListaQuestoesService} from './lista-questoes.service';
+import { ListarListasQuestoesComponent } from './listar-listas-questoes/listar-listas-questoes.component';
+
 
 @NgModule({
   declarations: [
@@ -52,7 +59,12 @@ import { ListarQuestoesComponent } from './listar-questoes/listar-questoes.compo
     CadastroComponent,
     PerfilComponent,
     CorrigirQuestoesComponent,
-    ListarQuestoesComponent
+    ListarQuestoesComponent,
+    ListarQuestoesRespondidasComponent,
+    ListarCorrigidasComponent,
+    CorrecaoComponent,
+    ListasQuestoesCrudComponent,
+    ListarListasQuestoesComponent,
     
     
   ],
@@ -79,7 +91,7 @@ import { ListarQuestoesComponent } from './listar-questoes/listar-questoes.compo
     GrowlModule,
     DropdownModule   
   ],
-  providers: [QuestaoService,UsuarioService,MessageService,QuestaoRespondidaService],
+  providers: [QuestaoService,UsuarioService,MessageService,QuestaoRespondidaService,ListaQuestoesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

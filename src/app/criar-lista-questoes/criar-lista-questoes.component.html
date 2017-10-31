@@ -6,7 +6,7 @@
 <form #meuForm="ngForm" class="form-group">
 
 <!--Para modificar a cor quando não preenchido = border border-warning, border border-danger-->
-<input  placeholder=" Nome da Lista das Questões "type="text"class="input form-control" type="text" name="titulo" [(ngModel)]="titulo" required>
+<input  placeholder=" Nome da Lista das Questões "type="text"class="input form-control" type="text" name="titulo" [(ngModel)]="listaQuestoes.titulo" required>
 <br>
 
 Selecione as questões : 
@@ -24,7 +24,7 @@ Selecione as questões :
       <th scope="row">{{questao.id}}</th>
       <td >{{questao.titulo}}</td>
         <div class="ui-g-12">
-          <p-checkbox name="{{questao.id}}" value="{{questao.id}}" label="" [(ngModel)]="selectedQuestions" inputId="{{questao.id}}"></p-checkbox>
+          <p-checkbox name="{{questao.id}}" value="{{questao.id}}" label="" [(ngModel)]="selectedQuestionsId" inputId="{{questao.id}}"></p-checkbox>
           </div>
        <!-- no lugar deste selecionar seria melhor  colocar um checkbox?
       <td><button class="btn bg-warning text-white" (click)=mudarCor()>Selecionar</button></td>-->
@@ -37,11 +37,11 @@ Selecione as questões :
   <div class="row">
     <div class="col ">
     Disponível a partir de :
-    <br><p-calendar name="calendar"  [(ngModel)]="startDate" [showTime]="true" required></p-calendar>
+    <br><p-calendar name="calendar"  [(ngModel)]="listaQuestoes.dataInicio" [showTime]="true" required></p-calendar>
     </div>
     <div class="col ">
     Disponível até :
-     <br><p-calendar name="calendar"  [(ngModel)]="deadLine" [showTime]="true" required></p-calendar>
+     <br><p-calendar name="calendar"  [(ngModel)]="listaQuestoes.dataFim" [showTime]="true" required></p-calendar>
     </div>
   </div>
 </div>
@@ -51,5 +51,7 @@ Selecione as questões :
 
 <button class="btn btn-success" [disabled]="!meuForm.valid" (click)="salvar()">Salvar Lista</button>
 </form>
+<p-growl [(value)]="msgs"></p-growl>
+
 </div>
 

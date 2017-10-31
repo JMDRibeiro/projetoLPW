@@ -5,6 +5,7 @@ export class UsuarioService {
 
   usuarios:Usuario[]=[];
   id : number = 0;
+  usuarioLogado:Usuario = new Usuario
 
   constructor() { 
     let professorTeste = new Usuario();

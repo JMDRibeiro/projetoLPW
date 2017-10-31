@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
         this.showLoginInexistente();
     }else{
         this.usuario = this.usuarioService.getUsuarioByLogin(this.usuario);
+        this.usuarioService.usuarioLogado = this.usuario;
         console.log(this.usuario);
         this.router.navigate(['/home',this.usuario.id]);
     }

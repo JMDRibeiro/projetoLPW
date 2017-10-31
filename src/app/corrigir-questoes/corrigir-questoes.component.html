@@ -2,11 +2,11 @@
 <app-cabecalho></app-cabecalho>  
 <div class="container">
 <router-outlet></router-outlet>
-<h4 class="text-center	"><strong> Aqui estará o título</strong></h4> <!--questaoRespondida.questao.titulo-->
-<strong>Nivel de dificuldade : {{nivelDificuldade}} X </strong><br><br> <!--questaoRespondida.questao.nivelDificuldade-->
+<h4 class="text-center	"><strong> {{questaoRespondida.questao.titulo}}</strong></h4> <!--questaoRespondida.questao.titulo-->
+<strong>Nivel de dificuldade : {{questaoRespondida.questao.nivelDificuldade}}</strong><br><br> <!--questaoRespondida.questao.nivelDificuldade-->
 <div class="card">
   <div class="card-body">
-      <h5>Aqui estará o enunciado da Questão</h5><!--questaoRespondida.questao.enunciado-->
+      <h5>{{questaoRespondida.questao.enunciado}}</h5><!--questaoRespondida.questao.enunciado-->
   </div>
 </div><br>
 
@@ -19,18 +19,18 @@
  </thead>   
 
   <tr>
-    <td> Entrada1</td><!--questaoRespondida.questao.retornosEsperados[0].entrada-->
-    <td> Saída1</td><!--questaoRespondida.questao.retornosEsperados[0].saida-->
+    <td> {{questaoRespondida.questao.retornosEsperados[0].entrada}}</td><!--questaoRespondida.questao.retornosEsperados[0].entrada-->
+    <td> {{questaoRespondida.questao.retornosEsperados[0].saida}}</td><!--questaoRespondida.questao.retornosEsperados[0].saida-->
   </tr> 
 
   <tr>
-    <td> Entrada2</td><!--questaoRespondida.questao.retornosEsperados[1].entrada-->
-    <td> Saída2</td><!--questaoRespondida.questao.retornosEsperados[1].saida-->
+    <td> {{questaoRespondida.questao.retornosEsperados[1].entrada}}</td><!--questaoRespondida.questao.retornosEsperados[1].entrada-->
+    <td> {{questaoRespondida.questao.retornosEsperados[1].saida}}</td><!--questaoRespondida.questao.retornosEsperados[1].saida-->
   </tr>
 
   <tr>
-    <td> Entrada3</td><!--questaoRespondida.questao.retornosEsperados[2].entrada-->
-    <td> Saída3</td><!--questaoRespondida.questao.retornosEsperados[2].saida-->
+    <td> {{questaoRespondida.questao.retornosEsperados[2].entrada}}</td><!--questaoRespondida.questao.retornosEsperados[2].entrada-->
+    <td> {{questaoRespondida.questao.retornosEsperados[2].saida}}</td><!--questaoRespondida.questao.retornosEsperados[2].saida-->
   </tr>
 </table>
   
@@ -38,20 +38,21 @@
 <h5><strong>Resposta do aluno:</strong></h5>
   <div class="card">
   <div class="card-body">
-      <h5>{{resposta}}</h5><!--questaoRespondida.questao.resposta-->
+      <h5>{{questaoRespondida.resposta}}</h5><!--questaoRespondida.questao.resposta-->
   </div>
 </div><br> 
 </div>
-
-<div><p-radioButton name="group1" value="true" label="Acertou" [(ngModel)]="val1" inputId="opt1"></p-radioButton>   
-                  <p-radioButton name="group1" value="true" label="Errou" [(ngModel)]="val1" inputId="opt1"></p-radioButton><br>
-</div><br>
-              <!--<button class="btn btn-warning" (click)=""><h5>Add comentário</h5></button>-->
-              <button class="btn btn-success"><h5>Enviar correção</h5></button><br><br>
-              <form *ngIf="addComentario" #meuForm="ngForm">
-                     <textarea rows="5" cols="155" [(ngModel)]="questaoRespondida.comentario" name="comentario"pInputTextarea></textarea>
-                    <br>
-              </form>
+<form #correcao="ngForm">
+      <div required>
+        <p-radioButton name="group1" value="true" label="Acertou" [(ngModel)]="questaoRespondida.acertou" inputId="opt1"></p-radioButton>   
+        <p-radioButton name="group1" value="false" label="Errou" [(ngModel)]="questaoRespondida.acertou" inputId="opt2"></p-radioButton><br>
+      </div><br>
+        <button class="btn btn-success float:left" (click)="addComent()"><h5>Add Comentário</h5></button>
+        <button class="btn btn-success float:right"  [disabled]="(correcao.valid && this.entrar)"  (click)="enviar()"><h5>Enviar correção</h5></button><br><br>
+        <form *ngIf="addComentario" #meuForm="ngForm">
+            <textarea rows="5" cols="155" [(ngModel)]="questaoRespondida.comentario" name="comentario"pInputTextarea></textarea><br>
+        </form>
+    </form>
 </div>
   
 <!--

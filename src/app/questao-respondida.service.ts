@@ -1,9 +1,20 @@
 import { Injectable } from '@angular/core';
 import { QuestaoRespondida } from './models/QuestaoRespondida';
+import { QuestaoService } from './questao.service';
+import { Questao } from './models/Questao';
+
 @Injectable()
 export class QuestaoRespondidaService {
   id:number = 0;
-  constructor() { }
+  constructor(private questaoService:QuestaoService) {
+    let qRTeste:QuestaoRespondida = new QuestaoRespondida();
+    qRTeste.foiCorrigida = false;
+    qRTeste.resposta = "Famos fazer o feste!";
+    let questao:Questao = new Questao();
+    questao.id = 1;
+    qRTeste.questao = this.questaoService.getById(questao);
+    this.insert(qRTeste);
+   }
   questoesRespondidas : QuestaoRespondida[] = [];
 insert(questaoRespondida:QuestaoRespondida){
       this.id++;
@@ -50,4 +61,45 @@ insert(questaoRespondida:QuestaoRespondida){
     return questao;
   }
 
+  getParaCorrigir(){
+    let questoesCorrigir:QuestaoRespondida[] = [];
+    for(let i:number=0;i<this.questoesRespondidas.length;i++){
+        if(!this.questoesRespondidas[i].foiCorrigida){
+          questoesCorrigir.push(this.questoesRespondidas[i]);
+        }
+    }
+    return questoesCorrigir;
+  }
+
+  getParaCorrigidas(){
+    let questoesCorrigidas:QuestaoRespondida[] = [];
+    for(let i:number=0;i<this.questoesRespondidas.length;i++){
+        if(this.questoesRespondidas[i].foiCorrigida){
+          questoesCorrigidas.push(this.questoesRespondidas[i]);
+        }
+    }
+    return questoesCorrigidas;
+  }
+
+  foiRespondida(questao:Questao){
+    let foiRespondida:boolean = false;
+    for(let i:number = 0;i<this.questoesRespondidas.length;i++){
+      if(this.questoesRespondidas[i].questao.id == questao.id){
+        foiRespondida =   true;
+      }
+    }
+    return foiRespondida;
+  }
+  getNaoRespondidas(questoes:Questao[]){
+      let questoesNaoRespondidas:Questao[] = [];
+      for(let i:number = 0;i<questoes.length;i++){
+        console.log(this.foiRespondida(questoes[i]));
+          if(!this.foiRespondida(questoes[i])){
+ 
+            console.log(questoes[i].enunciado+":"+questoes[i].id+"///"+this.foiRespondida(questoes[i]));
+            questoesNaoRespondidas.push(questoes[i]);
+          }
+      }
+      return questoesNaoRespondidas;
+  }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QuestaoService } from './../questao.service';
+import { QuestaoRespondidaService } from './../questao-respondida.service';
 import { Questao } from './../models/Questao';
 import {Router} from '@angular/router';
 import { ActivatedRoute} from '@angular/router'
@@ -18,8 +19,8 @@ export class ListarQuestoesComponent implements OnInit {
   questao:Questao = new Questao();
   questaoSelecionada: Questao;
 
-  constructor(private questaoService:QuestaoService,private router: Router,private route:ActivatedRoute) {
-    this.questoes = this.questaoService.listAll();
+  constructor(private questaoService:QuestaoService,private questaoRespondidaService:QuestaoRespondidaService,private router: Router,private route:ActivatedRoute) {
+    this.questoes = this.questaoRespondidaService.getNaoRespondidas(this.questaoService.listAll());
     this.tipoListagem = this.route.snapshot.params['tipoListagem'];
     if(this.tipoListagem=="responder"){
       this.destino = "/responder";
@@ -34,9 +35,11 @@ export class ListarQuestoesComponent implements OnInit {
 
   }
    
-    onRowSelect(event) {
+  onRowSelect(event) {
+        console.log(this.destino);
+        console.log(this.questaoSelecionada);
         this.router.navigate([this.destino,this.questaoSelecionada.id]);
-    }
+  }
     
    
 
