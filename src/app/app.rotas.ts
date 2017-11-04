@@ -13,6 +13,8 @@ import { ListarQuestoesComponent } from './listar-questoes/listar-questoes.compo
 import { ListarQuestoesRespondidasComponent} from './listar-questoes-respondidas/listar-questoes-respondidas.component';
 import { ListarCorrigidasComponent} from './listar-corrigidas/listar-corrigidas.component';
 import { CorrecaoComponent} from './correcao/correcao.component';
+import { ListarListasAlunosComponent} from './listar-listas-alunos/listar-listas-alunos.component';
+import { ListaQuestoesAlunosComponent} from './lista-questoes-alunos/lista-questoes-alunos.component';
 
 import {ModuleWithProviders} from '@angular/core'
 
@@ -37,6 +39,9 @@ const APP_ROTAS:Routes = [
     {path: 'corrigidas' , component: ListarCorrigidasComponent},
     {path: 'correcao/:id' , component: CorrecaoComponent},
     {path: 'responder/:id' , component: ResponderQuestaoComponent},
+
+    {path: 'listar-listas' , component: ListarListasAlunosComponent},
+    {path: 'lista-questoes-aluno/:id' , component: ListaQuestoesAlunosComponent},
 
 ];
 

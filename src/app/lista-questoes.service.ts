@@ -1,29 +1,37 @@
 import { Injectable } from '@angular/core';
 import { ListaQuestoes } from './models/ListaQuestoes';
 import { Questao } from './models/Questao';
+import { QuestaoService } from './questao.service';
 
 @Injectable()
 export class ListaQuestoesService {
   id : number = 0;
   listasQuestoes : ListaQuestoes[] = [];
-   constructor() { 
+   constructor(private questaoService:QuestaoService) { 
      let listaQuestoes1 : ListaQuestoes = new ListaQuestoes();
      let listaQuestoes2 : ListaQuestoes = new ListaQuestoes();
      let listaQuestoes3 : ListaQuestoes = new ListaQuestoes();
      listaQuestoes1.titulo = "Teste1";
      listaQuestoes2.titulo = "Teste2";
      listaQuestoes3.titulo = "Teste3";
+     let questao:Questao = new Questao();
+     questao.id = 1;
+     listaQuestoes1.questoes.push(this.questaoService.getById(questao));
+     listaQuestoes2.questoes.push(this.questaoService.getById(questao));
+     listaQuestoes3.questoes.push(this.questaoService.getById(questao));
+     questao.id = 2;
+     listaQuestoes1.questoes.push(this.questaoService.getById(questao));
+     questao.id = 3;
+     listaQuestoes1.questoes.push(this.questaoService.getById(questao));
+     listaQuestoes2.questoes.push(this.questaoService.getById(questao));
+     listaQuestoes1.dataInicio = new Date();
+     listaQuestoes1.dataFim = new Date("December 4, 2017 10:13:00");
 
+     listaQuestoes2.dataInicio = new Date();
+     listaQuestoes2.dataFim = new Date("January 4, 2018 10:13:00");
 
-     let questao1:Questao = new Questao(); questao1.titulo = "Questao1";
-     let questao2:Questao = new Questao(); questao2.titulo = "Questao2";
-     let questao3:Questao = new Questao(); questao3.titulo = "Questao3";
-     let questao4:Questao = new Questao(); questao4.titulo = "Questao4";
-     let questao5:Questao = new Questao(); questao5.titulo = "Questao5";
-     let questao6:Questao = new Questao(); questao6.titulo = "Questao6";
-     listaQuestoes1.questoes.push(questao1);listaQuestoes1.questoes.push(questao2);listaQuestoes1.questoes.push(questao3);listaQuestoes1.questoes.push(questao4);listaQuestoes1.questoes.push(questao5);listaQuestoes1.questoes.push(questao6);
-     listaQuestoes2.questoes.push(questao1);listaQuestoes2.questoes.push(questao3);listaQuestoes2.questoes.push(questao5);listaQuestoes2.questoes.push(questao6);
-     listaQuestoes3.questoes.push(questao1);
+     listaQuestoes3.dataInicio = new Date();
+     listaQuestoes3.dataFim = new Date("December 22, 2017 12:15:00");
 
     this.insert(listaQuestoes1);
     this.insert(listaQuestoes2);

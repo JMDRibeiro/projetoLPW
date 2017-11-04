@@ -33,7 +33,7 @@ export class CriarListaQuestoesComponent implements OnInit {
         console.log("Pos:"+i);
         console.log("Id:"+this.selectedQuestionsId[i]);
         questao.id = this.selectedQuestionsId[i];
-        questao =this.questaoService.getById(questao);
+        questao = this.questaoService.getById(questao);
         console.log(questao);
         this.listaQuestoes.questoes.push(questao);
     }

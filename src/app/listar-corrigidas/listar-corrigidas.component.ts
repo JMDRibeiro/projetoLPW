@@ -15,15 +15,17 @@ import { ActivatedRoute} from '@angular/router'
 export class ListarCorrigidasComponent implements OnInit {
   acertou:String = "Sim";
   questaoRespondidaSelecionada:QuestaoRespondida =  new QuestaoRespondida();
-  questoesRespondidas:QuestaoRespondida[] =  [];
   constructor(private questaoRespondidaService:QuestaoRespondidaService,private router: Router,private route:ActivatedRoute) {
-    this.questoesRespondidas = this.questaoRespondidaService.getParaCorrigidas();
+    
    }
 
   ngOnInit() {
   }
    onRowSelect(event) {
         this.router.navigate(['/correcao',this.questaoRespondidaSelecionada.id]);
+  }
+  getQuestoesCorrigidas(){
+        return this.questaoRespondidaService.getParaCorrigidas();
   }
 
 }

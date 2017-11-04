@@ -1,0 +1,12 @@
+<router-outlet></router-outlet>
+<app-cabecalho></app-cabecalho>
+<h3 class="text-center"><strong>Suas listas de questões</strong></h3>
+<div class="container">
+<p-dataTable [value]="carregarListas()" selectionMode="single" [(selection)]="listaQuestoesSelecionada" (onRowSelect)="onRowSelect($event)" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
+    <p-column field="titulo" header="Título" [sortable]="true"></p-column>
+    <p-column field="questoes.length" header="Qtde de questões" [sortable]="true"></p-column>
+    <p-column field="dataInicio" header="A partir de :" [sortable]="true"></p-column>
+    <p-column field="dataFim" header="Até :" [sortable]="true"></p-column>
+</p-dataTable>
+</div>
+

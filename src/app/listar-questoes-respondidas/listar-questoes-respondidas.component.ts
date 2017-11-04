@@ -17,7 +17,6 @@ export class ListarQuestoesRespondidasComponent implements OnInit {
   questaoRespondidaSelecionada:QuestaoRespondida =  new QuestaoRespondida();
   questoesRespondidas:QuestaoRespondida[] =  [];
   constructor(private questaoRespondidaService:QuestaoRespondidaService,private router: Router,private route:ActivatedRoute) {
-    this.questoesRespondidas = this.questaoRespondidaService.getParaCorrigir();
    }
 
   ngOnInit() {
@@ -25,5 +24,7 @@ export class ListarQuestoesRespondidasComponent implements OnInit {
    onRowSelect(event) {
         this.router.navigate(['/corrigir',this.questaoRespondidaSelecionada.id]);
   }
-
+  getQuestoesRespondidas(){
+        return this.questaoRespondidaService.getParaCorrigir();;
+  } 
 }

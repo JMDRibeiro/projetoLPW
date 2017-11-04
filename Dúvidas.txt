@@ -1,0 +1,3 @@
+Como evitar o erro na criação da lista das questões? Ao por data inválida, aumenta a qtde de questões
+O sistema, no estágio atual, já oferece o mínimo necessário? Caso contrário, o que pode ser feito?
+Condicionar os botões de acordo com as permissões do usuáro? (Visualizar)

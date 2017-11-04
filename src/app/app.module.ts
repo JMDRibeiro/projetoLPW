@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { FormsModule} from '@angular/forms';
+import {MegaMenuModule} from 'primeng/primeng';
 
 import {rota} from './app.rotas';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -44,6 +45,8 @@ import { CorrecaoComponent } from './correcao/correcao.component';
 import { ListasQuestoesCrudComponent } from './listas-questoes-crud/listas-questoes-crud.component';
 import {ListaQuestoesService} from './lista-questoes.service';
 import { ListarListasQuestoesComponent } from './listar-listas-questoes/listar-listas-questoes.component';
+import { ListarListasAlunosComponent } from './listar-listas-alunos/listar-listas-alunos.component';
+import { ListaQuestoesAlunosComponent } from './lista-questoes-alunos/lista-questoes-alunos.component';
 
 
 @NgModule({
@@ -65,6 +68,8 @@ import { ListarListasQuestoesComponent } from './listar-listas-questoes/listar-l
     CorrecaoComponent,
     ListasQuestoesCrudComponent,
     ListarListasQuestoesComponent,
+    ListarListasAlunosComponent,
+    ListaQuestoesAlunosComponent,
     
     
   ],
@@ -78,6 +83,7 @@ import { ListarListasQuestoesComponent } from './listar-listas-questoes/listar-l
     CalendarModule,
     BrowserModule,
     CheckboxModule,
+    MegaMenuModule,
     AccordionModule,
     ButtonModule,
     PasswordModule,
