@@ -29,7 +29,7 @@ export class CabecalhoComponent implements OnInit {
   menuAluno : MenuItem[] = [
       {label: 'Questões', routerLink:['/listar-questoes/responder']  },
       {label: 'Questões corrigidas', routerLink:['/corrigidas'] },
-      {label: 'Listas de Questões', routerLink:['/listar-listas']  },
+      {label: 'Listas de questões', routerLink:['/listar-listas']  },
       {label: 'Atividades', routerLink:['/listar-todas'] },
       {label: 'Materiais', icon: 'fa-book',routerLink:['/home']},
       {label: 'Perfil', icon: 'fa-support',routerLink:['/perfil']},
@@ -38,9 +38,9 @@ export class CabecalhoComponent implements OnInit {
 
   ];
   menuProfessor : MenuItem[] = [
-      {label: 'Gerenciar Questões', routerLink:['/listar-todas-crud'] },
-      {label: 'Inserir Questões', routerLink:['/inserir'] },
-      {label: 'Corrigir missões', routerLink:['/corrigir'] },
+      {label: 'Gerenciar questões', routerLink:['/listar-todas-crud'] },
+      {label: 'Inserir questões', routerLink:['/inserir'] },
+      {label: 'Corrigir questões', routerLink:['/corrigir'] },
       {label: 'Gerenciar listas', routerLink:['/listas-questoes-crud'] },
       {label: 'Criar listas', icon: 'fa-book',routerLink:['/criar-lista']},
       {label: 'Fale conosco', icon: 'fa-twitter',routerLink:['/corrigir']},
