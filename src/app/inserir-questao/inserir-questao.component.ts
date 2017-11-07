@@ -17,16 +17,15 @@ export class InserirQuestaoComponent implements OnInit {
   msgs: Message[] = [];
 
   constructor(private questaoService : QuestaoService, private messageService: MessageService,private route:ActivatedRoute) { 
+  }
+
+  ngOnInit() {
       this.questao.id = this.route.snapshot.params['id'];
       this.questao = this.questaoService.getById(this.questao);
       console.log(this.questao);
       if(this.questao == undefined){
           this.questao = new Questao();
-      }
-  }
-
-  ngOnInit() {
-    
+      }    
   }
 
   salvar(){ 

@@ -38,14 +38,25 @@ export class CabecalhoComponent implements OnInit {
 
   ];
   menuProfessor : MenuItem[] = [
-      {label: 'Gerenciar questões', routerLink:['/listar-todas-crud'] },
-      {label: 'Inserir questões', routerLink:['/inserir'] },
-      {label: 'Corrigir questões', routerLink:['/corrigir'] },
-      {label: 'Gerenciar listas', routerLink:['/listas-questoes-crud'] },
-      {label: 'Criar listas', icon: 'fa-book',routerLink:['/criar-lista']},
-      {label: 'Fale conosco', icon: 'fa-twitter',routerLink:['/corrigir']},
+
+      {
+                label: 'Questões',
+                items: [
+                    {label: 'Gerenciar questões', routerLink:['/listar-todas-crud'] },
+                    {label: 'Inserir questões', routerLink:['/inserir'] },
+                    {label: 'Corrigir questões', routerLink:['/corrigir'] },
+                ]
+      },
+      {
+                label: 'Listas',
+                items: [
+                    {label: 'Gerenciar listas', routerLink:['/listas-questoes-crud'] },
+                    {label: 'Criar listas', icon: 'fa-book',routerLink:['/criar-lista']},
+                ]
+      },
       {label: 'Materiais', icon: 'fa-book',routerLink:['/login']},
-      {label: 'Perfil', icon: 'fa-support',routerLink:['/perfil']},
+      {label: 'Perfil', icon: 'fa-support',routerLink:['/perfil']},   
+      {label: 'Fale conosco', icon: 'fa-twitter',routerLink:['/corrigir']},
       {label: 'Fale conosco', icon: 'fa-twitter',routerLink:['/corrigir']},
       {label: 'Sair', icon: 'fa-twitter',routerLink:['/login']}  
   ];

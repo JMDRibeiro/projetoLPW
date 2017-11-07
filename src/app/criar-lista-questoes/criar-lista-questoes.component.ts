@@ -3,8 +3,10 @@ import { Questao } from '../models/Questao';
 import {ListaQuestoesService} from '../lista-questoes.service';
 import {QuestaoService} from '../questao.service';
 import { ListaQuestoes} from '../models/ListaQuestoes';
+
 import {MessageService} from 'primeng/components/common/messageservice';
-import {Message} from 'primeng/components/common/api';
+
+import {Message} from 'primeng/primeng';
 import {Router} from '@angular/router';
 import { ActivatedRoute} from '@angular/router'
 
