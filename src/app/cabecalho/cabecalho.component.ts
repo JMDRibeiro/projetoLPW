@@ -57,7 +57,6 @@ export class CabecalhoComponent implements OnInit {
       {label: 'Materiais', icon: 'fa-book',routerLink:['/login']},
       {label: 'Perfil', icon: 'fa-support',routerLink:['/perfil']},   
       {label: 'Fale conosco', icon: 'fa-twitter',routerLink:['/corrigir']},
-      {label: 'Fale conosco', icon: 'fa-twitter',routerLink:['/corrigir']},
       {label: 'Sair', icon: 'fa-twitter',routerLink:['/login']}  
   ];
   

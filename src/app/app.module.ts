@@ -47,6 +47,7 @@ import {ListaQuestoesService} from './lista-questoes.service';
 import { ListarListasQuestoesComponent } from './listar-listas-questoes/listar-listas-questoes.component';
 import { ListarListasAlunosComponent } from './listar-listas-alunos/listar-listas-alunos.component';
 import { ListaQuestoesAlunosComponent } from './lista-questoes-alunos/lista-questoes-alunos.component';
+import {PickListModule} from 'primeng/primeng';
 
 
 @NgModule({
@@ -74,6 +75,7 @@ import { ListaQuestoesAlunosComponent } from './lista-questoes-alunos/lista-ques
     
   ],
   imports: [
+    PickListModule,
     DialogModule,
     DataTableModule,
     SharedModule,

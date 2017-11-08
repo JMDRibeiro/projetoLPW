@@ -9,7 +9,18 @@
 <input  placeholder=" Nome da Lista das Questões "type="text"class="input form-control" type="text" name="titulo" [(ngModel)]="listaQuestoes.titulo" required>
 <br>
 
-Selecione as questões : 
+Selecione as questões : <br><br>
+
+<p-pickList [source]="questoes" [target]="listaQuestoes.questoes" sourceHeader="Todas questões" targetHeader="Questões selecionadas" [responsive]="true" filterBy="titulo" 
+dragdrop="true" dragdropScope="questoes" sourceFilterPlaceholder="Procure por titulo" targetFilterPlaceholder="Procure por titulo" [sourceStyle]="{'height':'200px'}" [targetStyle]="{'height':'200px'}">
+    <ng-template let-questao pTemplate="item">
+        <div class="ui-helper-clearfix">
+            <div style="font-size:14px;float:right;margin:15px 5px 0 0">{{questao.titulo}}</div>
+        </div>
+    </ng-template>
+</p-pickList>
+
+<!--
 <table class="table" style="width: 1100px;">
   <thead>
     <tr>
@@ -20,18 +31,18 @@ Selecione as questões :
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let questao of questoes" class="{{cor}}">
-      <th scope="row">{{questao.id}}</th>
+    <tr *ngFor="let questao of questoes" class="{{cor}}">      <th scope="row">{{questao.id}}</th>
       <td >{{questao.titulo}}</td>
         <div class="ui-g-12">
           <p-checkbox name="{{questao.id}}" value="{{questao.id}}" label="" [(ngModel)]="selectedQuestionsId" inputId="{{questao.id}}"></p-checkbox>
           </div>
-       <!-- no lugar deste selecionar seria melhor  colocar um checkbox?
-      <td><button class="btn bg-warning text-white" (click)=mudarCor()>Selecionar</button></td>-->
+       no lugar deste selecionar seria melhor  colocar um checkbox?
+      <td><button class="btn bg-warning text-white" (click)=mudarCor()>Selecionar</button></td>
     </tr>
   </tbody>
 </table>
-
+-->
+<br>
 
 <div class="container">
   <div class="row">
