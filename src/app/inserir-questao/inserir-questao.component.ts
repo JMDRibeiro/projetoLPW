@@ -39,7 +39,9 @@ export class InserirQuestaoComponent implements OnInit {
   showSuccess() {
         this.msgs = [];
         this.msgs.push({severity:'success', summary:'Questão inserida com sucesso!', detail:' '});
-    }
-
+  }
+  deletar(){
+      this.questaoService.delete(this.questao);
+  }
 
 }

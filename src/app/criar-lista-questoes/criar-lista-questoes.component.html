@@ -12,14 +12,24 @@
 Selecione as questões : <br><br>
 
 <p-pickList [source]="questoes" [target]="listaQuestoes.questoes" sourceHeader="Todas questões" targetHeader="Questões selecionadas" [responsive]="true" filterBy="titulo" 
-dragdrop="true" dragdropScope="questoes" sourceFilterPlaceholder="Procure por titulo" targetFilterPlaceholder="Procure por titulo" [sourceStyle]="{'height':'200px'}" [targetStyle]="{'height':'200px'}">
+dragdrop="true" dragdropScope="questoes" sourceFilterPlaceholder="Procure por titulo" targetFilterPlaceholder="Procure por titulo" [sourceStyle]="{'height':'200px'}" [targetStyle]="{'height':'200px'}" required>
     <ng-template let-questao pTemplate="item">
         <div class="ui-helper-clearfix">
             <div style="font-size:14px;float:right;margin:15px 5px 0 0">{{questao.titulo}}</div>
         </div>
     </ng-template>
-</p-pickList>
+</p-pickList><br><br>
 
+Selecione os alunos : <br><br>
+
+<p-pickList [source]="alunos" [target]="listaQuestoes.alunos" sourceHeader="Todas questões" targetHeader="Questões selecionadas" [responsive]="true" filterBy="nomeCompleto" 
+dragdrop="true" dragdropScope="alunos" sourceFilterPlaceholder="Procure por turma" targetFilterPlaceholder="Procure por turma" [sourceStyle]="{'height':'200px'}" [targetStyle]="{'height':'200px'}" required>
+    <ng-template let-aluno pTemplate="item">
+        <div class="ui-helper-clearfix">
+            <div style="font-size:14px;float:right;margin:15px 5px 0 0">{{aluno.nomeCompleto}}</div>
+        </div>
+    </ng-template>
+</p-pickList>
 <!--
 <table class="table" style="width: 1100px;">
   <thead>

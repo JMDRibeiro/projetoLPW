@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ListaQuestoes } from './models/ListaQuestoes';
 import { Questao } from './models/Questao';
+import { Usuario } from './models/Usuario';
 import { QuestaoService } from './questao.service';
 
 @Injectable()
@@ -45,9 +46,22 @@ export class ListaQuestoesService {
       console.log("Inserção efetuada! Questao:\n"+ listaQuestao);
   }
   listAll(){
-    console.log("Listando todas as Questões> Total :" + this.listasQuestoes.length)
+    console.log("Listando todas as Questões> Total :" + this.listasQuestoes.length);
     return this.listasQuestoes;
   }
+
+  listAllByAluno(aluno:Usuario){
+    let listasAluno:ListaQuestoes[] = [];
+    for(let i:number =0;i<this.listasQuestoes.length;i++){
+        if(this.alunoEstaNaLista(this.listasQuestoes[i],aluno)){
+          listasAluno.push(this.listasQuestoes[i]);
+        }
+
+    }
+    console.log("Listando todas as Questões do aluno"+aluno.nomeCompleto +"> Total :\n" + listasAluno);
+    return listasAluno;
+  }
+
   update(listaQuestao:ListaQuestoes){
       console.log("Atualizando Questão = "+listaQuestao);
       let posicao = this.findListaQuestao(listaQuestao);
@@ -83,5 +97,14 @@ export class ListaQuestoesService {
     return listaQuestao;
   }
 
+  alunoEstaNaLista(lista:ListaQuestoes,aluno:Usuario){
+    let estaNaLista:boolean = false;
+    for(let j:number=0;j<lista.alunos.length;j++){
+        if(lista.alunos[j].id == aluno.id){
+            estaNaLista = true;
+        }
+    }
+    return estaNaLista;
+  }
 }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ListaQuestoesService} from '../lista-questoes.service';
 import { ListaQuestoes} from '../models/ListaQuestoes';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,8 +12,9 @@ import { ListaQuestoes} from '../models/ListaQuestoes';
 export class ListasQuestoesCrudComponent implements OnInit {
 
   listasQuestoes:ListaQuestoes[] = [];
+  listaQuestoes:ListaQuestoes;
 
-  constructor(private listaQuestoesService:ListaQuestoesService) { 
+  constructor(private listaQuestoesService:ListaQuestoesService,private router: Router) { 
     this.listasQuestoes = this.listaQuestoesService.listAll();
     console.log(this.listasQuestoes);
   }
@@ -20,4 +22,8 @@ export class ListasQuestoesCrudComponent implements OnInit {
   ngOnInit() {
   }
 
+  onRowSelect(event) {
+        this.listaQuestoes = event.data;
+        this.router.navigate(['/editar-lista-questoes',this.listaQuestoes.id]);
+    }
 }

@@ -1,9 +1,12 @@
 import {Questao} from './Questao';
+import {Usuario} from './Usuario';
 
 export class ListaQuestoes{
     id : number;
     titulo : String;
     questoes : Questao[] = [];
+    alunos : Usuario[] = [];
+    professorAdministrador : Usuario;
     dataInicio : Date;
     dataFim : Date;
     
@@ -15,5 +18,12 @@ export class ListaQuestoes{
             dataValida = false;
         }
         return dataValida;
+    }
+    ehProfessor(){
+        let ehProfessor : boolean = false;
+        if(this.professorAdministrador.tipo==1){
+            ehProfessor = true;
+        }
+        return ehProfessor;
     }
 }

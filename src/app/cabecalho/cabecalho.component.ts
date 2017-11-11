@@ -40,7 +40,7 @@ export class CabecalhoComponent implements OnInit {
   menuProfessor : MenuItem[] = [
 
       {
-                label: 'Questões',
+                label: 'Questões', icon: 'fa-book',
                 items: [
                     {label: 'Gerenciar questões', routerLink:['/listar-todas-crud'] },
                     {label: 'Inserir questões', routerLink:['/inserir'] },
@@ -48,21 +48,22 @@ export class CabecalhoComponent implements OnInit {
                 ]
       },
       {
-                label: 'Listas',
+                label: 'Listas', icon: 'fa-book',
                 items: [
                     {label: 'Gerenciar listas', routerLink:['/listas-questoes-crud'] },
-                    {label: 'Criar listas', icon: 'fa-book',routerLink:['/criar-lista']},
+                    {label: 'Criar listas',routerLink:['/criar-lista']},
                 ]
-      },
-      {label: 'Materiais', icon: 'fa-book',routerLink:['/login']},
+      }, 
+      //fa-book ; fa-graduation-cap
+      {label: 'Materiais', icon: 'fa-folder-open',routerLink:['/login']},
       {label: 'Perfil', icon: 'fa-support',routerLink:['/perfil']},   
-      {label: 'Fale conosco', icon: 'fa-twitter',routerLink:['/corrigir']},
-      {label: 'Sair', icon: 'fa-twitter',routerLink:['/login']}  
+      {label: 'Fale conosco', icon: 'fa-comments-o',routerLink:['/corrigir']},
+      {label: 'Sair', icon: 'fa-sign-out ',routerLink:['/login']}  
   ];
   
    ngOnInit() {
      //de acordo com o tipo de usuário, determinar qual será o seu Menu
-     if(this.usuarioService.usuarioLogado.tipo=="professor"){
+     if(this.usuarioService.usuarioLogado.tipo==1){
          this.items = this.menuProfessor;
      }else{
          this.items = this.menuAluno;

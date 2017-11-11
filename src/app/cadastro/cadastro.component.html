@@ -11,7 +11,7 @@
     <input type="text"class="input form-control" placeholder="Email" type="text" name="enunciado" [(ngModel)] = "this.usuario.email" required><br> 
     <input type="text"class="input form-control" placeholder="Login" type="text" name="login" [(ngModel)] = "this.usuario.login" required> <br>
     <input type="text"class="input form-control" placeholder="Senha" type="text" name="senha" [(ngModel)] = "this.usuario.senha" required> <br>
-    <p-dropdown [options]="tiposUsuario" [(ngModel)]="usuario.tipo" placeholder="Selecione seu tipo de usuário" name="tipoUsuario"></p-dropdown>
+    <p-dropdown [options]="tiposUsuario" [(ngModel)]="tipoUsuario" placeholder="Selecione seu tipo de usuário" name="tipoUsuario"></p-dropdown>
     <button class="btn btn-success" [disabled]="!meuForm.valid" (click)="cadastrarUsuario()" routerLink="/login">Cadastrar-se</button>
 </form>
 <p-growl [(value)]="msgs"></p-growl>

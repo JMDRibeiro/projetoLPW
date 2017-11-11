@@ -39,7 +39,7 @@ const APP_ROTAS:Routes = [
     {path: 'corrigidas' , component: ListarCorrigidasComponent},
     {path: 'correcao/:id' , component: CorrecaoComponent},
     {path: 'responder/:id' , component: ResponderQuestaoComponent},
-
+    {path: 'editar-lista-questoes/:id' , component: CriarListaQuestoesComponent},
     {path: 'listar-listas' , component: ListarListasAlunosComponent},
     {path: 'lista-questoes-aluno/:id' , component: ListaQuestoesAlunosComponent},
 

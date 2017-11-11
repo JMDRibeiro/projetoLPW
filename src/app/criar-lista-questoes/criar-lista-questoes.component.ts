@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Questao } from '../models/Questao';
+import { Usuario } from '../models/Usuario';
+
 import {ListaQuestoesService} from '../lista-questoes.service';
 import {QuestaoService} from '../questao.service';
+import {UsuarioService} from '../usuario-service.service';
+
 import { ListaQuestoes} from '../models/ListaQuestoes';
 
 import {MessageService} from 'primeng/components/common/messageservice';
@@ -20,13 +24,22 @@ export class CriarListaQuestoesComponent implements OnInit {
 
   listaQuestoes:ListaQuestoes = new ListaQuestoes();
   questoes:Questao[];
-
+  alunos:Usuario[];
   selectedQuestionsId: number[] = [];
 
-  constructor(private questaoService:QuestaoService,private listaQuestoesService:ListaQuestoesService,private router: Router,private route:ActivatedRoute) { }
+  constructor(private questaoService:QuestaoService,private usuarioService:UsuarioService,private listaQuestoesService:ListaQuestoesService,private router: Router,private route:ActivatedRoute) { }
 
   ngOnInit() {
     this.questoes = this.questaoService.listAll();
+    this.alunos = this.usuarioService.listAllAlunos();
+
+   this.listaQuestoes.id = this.route.snapshot.params['id'];
+   this.listaQuestoes = this.listaQuestoesService.getById(this.listaQuestoes);
+   console.log(this.listaQuestoes);
+   if(this.listaQuestoes == undefined){
+      this.listaQuestoes = new ListaQuestoes();
+   }    
+    console.log(this.alunos);
   }
   salvar(){
     console.log("Total selecionado: "+this.selectedQuestionsId.length);

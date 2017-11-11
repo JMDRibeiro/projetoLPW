@@ -13,12 +13,13 @@ import {SelectItem} from 'primeng/primeng';
 export class CadastroComponent implements OnInit {
   msgs: Message[] = [];
   tiposUsuario:SelectItem[] = [];
+  tipoUsuario:SelectItem;
   usuario : Usuario;
   constructor(private usuarioService:UsuarioService) {
     this.usuario = new Usuario();
     this.tiposUsuario = [];
-    this.tiposUsuario.push({label:'Aluno', value:{id:1, name: 'Aluno', code: 'A'}});
-    this.tiposUsuario.push({label:'Professor', value:{id:2, name: 'Professor', code: 'P'}});
+    this.tiposUsuario.push({label:'Aluno', value:{id:0, name: 'Aluno', code: 'A'}});
+    this.tiposUsuario.push({label:'Professor', value:{id:1, name: 'Professor', code: 'P'}});
 
 
    }
@@ -27,6 +28,7 @@ export class CadastroComponent implements OnInit {
   }
 
   cadastrarUsuario(){
+    this.usuario.tipo = this.tipoUsuario.value.id;
     this.usuarioService.insert(this.usuario);
     console.log("Cadastrado!")
     console.log(this.usuario.id);
