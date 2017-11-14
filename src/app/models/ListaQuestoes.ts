@@ -13,7 +13,9 @@ export class ListaQuestoes{
     checarValidadeData(){
         let dataHoje:Date = new Date();
         let dataValida:boolean = true;
-        console.log(dataHoje);
+        console.log("Data atual: "+dataHoje);
+        console.log("Data inicio: "+this.dataInicio);
+        console.log("Data fim: "+this.dataFim);
         if(this.dataFim<this.dataInicio || dataHoje>this.dataInicio){
             dataValida = false;
         }

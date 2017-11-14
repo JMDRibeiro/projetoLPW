@@ -52,14 +52,22 @@ export class CriarListaQuestoesComponent implements OnInit {
         console.log(questao);
         this.listaQuestoes.questoes.push(questao);
     }
+   console.log("THIS");
    console.log(this.listaQuestoes);
-   if(this.listaQuestoes.checarValidadeData()==false){
+  if(this.listaQuestoes.id >=0){
+      this.listaQuestoesService.update(this.listaQuestoes);
+      this.router.navigate(['/listas-questoes-crud']);
+  }else{
+      this.listaQuestoesService.insert(this.listaQuestoes);
+      this.router.navigate(['/listas-questoes-crud']);
+  }
+  
+  /* if(this.listaQuestoes.checarValidadeData()==false){
          this.msgs=[];
     this.msgs.push({severity:'error', summary:'Data inválida', detail:'Verifique as datas.'});
    }else{
-     this.listaQuestoesService.insert(this.listaQuestoes);
-     this.router.navigate(['/listas-questoes-crud']);
+     
    }  
-   
+   */
   }
 }

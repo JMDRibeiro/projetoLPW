@@ -22,7 +22,7 @@ dragdrop="true" dragdropScope="questoes" sourceFilterPlaceholder="Procure por ti
 
 Selecione os alunos : <br><br>
 
-<p-pickList [source]="alunos" [target]="listaQuestoes.alunos" sourceHeader="Todas questões" targetHeader="Questões selecionadas" [responsive]="true" filterBy="nomeCompleto" 
+<p-pickList [source]="alunos" [target]="listaQuestoes.alunos" sourceHeader="Todos alunos" targetHeader="Aluno(s) selecionado(s)" [responsive]="true" filterBy="nomeCompleto" 
 dragdrop="true" dragdropScope="alunos" sourceFilterPlaceholder="Procure por turma" targetFilterPlaceholder="Procure por turma" [sourceStyle]="{'height':'200px'}" [targetStyle]="{'height':'200px'}" required>
     <ng-template let-aluno pTemplate="item">
         <div class="ui-helper-clearfix">
