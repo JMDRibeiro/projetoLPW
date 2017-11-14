@@ -40,6 +40,7 @@ export class CriarListaQuestoesComponent implements OnInit {
       this.listaQuestoes = new ListaQuestoes();
    }else{
       this.questoes = this.listaQuestoesService.questoesNaoEstaoNaLista(this.listaQuestoes);
+      this.alunos = this.listaQuestoesService.alunosNaoEstaoNaLista(this.listaQuestoes);
    }    
   }
   salvar(){

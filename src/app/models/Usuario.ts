@@ -1,3 +1,4 @@
+import {Turma} from './Turma';
 export class Usuario{
     id : number;
     nomeCompleto : String;
@@ -7,4 +8,5 @@ export class Usuario{
     login : String;
     tipo : number;
     disciplina : String;
+    turmas:Turma[] = [];
 }

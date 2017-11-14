@@ -30,7 +30,7 @@
 
     <div style="width: 700px;" class="border">
       <h6>Veja sua evolução no RPG!</h6>
-           Gráfico Evolução
+<p-chart type="line" [data]="data" (onDataSelect)="selectData($event)"></p-chart>
            
     </div>
 

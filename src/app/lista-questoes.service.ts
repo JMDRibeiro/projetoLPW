@@ -112,6 +112,16 @@ export class ListaQuestoesService {
     return listaQuestao;
   }
 
+  alunosNaoEstaoNaLista(lista:ListaQuestoes){
+    let alunos:Usuario[] = this.usuarioService.listAllAlunos();
+    let alunosNaoEstaoNaLista:Usuario[] = [];
+    for(let i:number=0;i<alunos.length;i++){
+      if(!this.alunoEstaNaLista(lista,alunos[i])){
+        alunosNaoEstaoNaLista.push(alunos[i]);
+      }
+    }
+    return alunosNaoEstaoNaLista;
+  }
   alunoEstaNaLista(lista:ListaQuestoes,aluno:Usuario){
     let estaNaLista:boolean = false;
     for(let j:number=0;j<lista.alunos.length;j++){

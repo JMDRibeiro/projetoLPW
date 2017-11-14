@@ -27,7 +27,6 @@ export class CabecalhoComponent implements OnInit {
         ];
         */
   menuAluno : MenuItem[] = [
-      {label: 'Questões', routerLink:['/listar-questoes/responder']  },
       {label: 'Questões corrigidas', routerLink:['/corrigidas'] },
       {label: 'Listas de questões', routerLink:['/listar-listas']  },
       {label: 'Materiais', icon: 'fa-book',routerLink:['/home']},
@@ -50,7 +49,14 @@ export class CabecalhoComponent implements OnInit {
                 label: 'Listas', icon: 'fa-book',
                 items: [
                     {label: 'Gerenciar listas', routerLink:['/listas-questoes-crud'] },
-                    {label: 'Criar listas',routerLink:['/criar-lista']},
+                    {label: 'Inserir listas',routerLink:['/criar-lista']},
+                ]
+      }, 
+      {
+                label: 'Turma', icon: 'fa fa-users',
+                items: [
+                    {label: 'Gerenciar turmas', routerLink:['/turma/gerenciar'] },
+                    {label: 'Inserir turmas',routerLink:['/turma/inserir']},
                 ]
       }, 
       //fa-book ; fa-graduation-cap

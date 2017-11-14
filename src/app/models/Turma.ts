@@ -3,5 +3,5 @@ export class Turma{
     id : number;
     nome : String;
     professorAdminstrador : Usuario;
-    alunos : Usuario[];
+    alunos : Usuario[] = [];
 }

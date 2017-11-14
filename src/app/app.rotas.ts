@@ -15,12 +15,20 @@ import { ListarCorrigidasComponent} from './listar-corrigidas/listar-corrigidas.
 import { CorrecaoComponent} from './correcao/correcao.component';
 import { ListarListasAlunosComponent} from './listar-listas-alunos/listar-listas-alunos.component';
 import { ListaQuestoesAlunosComponent} from './lista-questoes-alunos/lista-questoes-alunos.component';
+import { InserirTurmaComponent } from './inserir-turma/inserir-turma.component';
+import { ListarTodasCrudTurmaComponent } from './listar-todas-crud-turma/listar-todas-crud-turma.component';
+import { GerenciarTagsComponent } from './gerenciar-tags/gerenciar-tags.component';
+
 
 import {ModuleWithProviders} from '@angular/core'
 
 
 
 const APP_ROTAS:Routes = [
+    {path: 'turma/inserir' , component: InserirTurmaComponent},
+    {path: 'turma/gerenciar' , component: ListarTodasCrudTurmaComponent},
+    {path: 'turma/editar/:id' , component: InserirTurmaComponent},
+    {path: 'tag/gerenciar' , component: GerenciarTagsComponent},
     {path: 'responder' , component: ResponderQuestaoComponent},
     {path: 'inserir' , component: InserirQuestaoComponent},
     {path: 'editar/:id' , component: InserirQuestaoComponent},

@@ -37,6 +37,9 @@ import {DialogModule} from 'primeng/primeng';
 import {GrowlModule} from 'primeng/primeng';
 import {UsuarioService} from './usuario-service.service';
 import {QuestaoRespondidaService} from './questao-respondida.service';
+import {TurmaService} from './turma.service';
+import {TagService} from './tag.service';
+
 import {MessageService} from 'primeng/components/common/messageservice';
 import { ListarQuestoesComponent } from './listar-questoes/listar-questoes.component';
 import { ListarQuestoesRespondidasComponent } from './listar-questoes-respondidas/listar-questoes-respondidas.component';
@@ -48,6 +51,10 @@ import { ListarListasQuestoesComponent } from './listar-listas-questoes/listar-l
 import { ListarListasAlunosComponent } from './listar-listas-alunos/listar-listas-alunos.component';
 import { ListaQuestoesAlunosComponent } from './lista-questoes-alunos/lista-questoes-alunos.component';
 import {PickListModule} from 'primeng/primeng';
+import {ChartModule} from 'primeng/primeng';
+import { InserirTurmaComponent } from './inserir-turma/inserir-turma.component';
+import { ListarTodasCrudTurmaComponent } from './listar-todas-crud-turma/listar-todas-crud-turma.component';
+import { GerenciarTagsComponent } from './gerenciar-tags/gerenciar-tags.component';
 
 
 @NgModule({
@@ -71,10 +78,14 @@ import {PickListModule} from 'primeng/primeng';
     ListarListasQuestoesComponent,
     ListarListasAlunosComponent,
     ListaQuestoesAlunosComponent,
+    InserirTurmaComponent,
+    ListarTodasCrudTurmaComponent,
+    GerenciarTagsComponent,
     
     
   ],
   imports: [
+    ChartModule,
     PickListModule,
     DialogModule,
     DataTableModule,
@@ -99,7 +110,7 @@ import {PickListModule} from 'primeng/primeng';
     GrowlModule,
     DropdownModule   
   ],
-  providers: [QuestaoService,UsuarioService,MessageService,QuestaoRespondidaService,ListaQuestoesService],
+  providers: [QuestaoService,UsuarioService,MessageService,QuestaoRespondidaService,ListaQuestoesService,TurmaService,TagService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
