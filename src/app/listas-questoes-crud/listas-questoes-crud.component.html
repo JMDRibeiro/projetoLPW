@@ -6,6 +6,8 @@
     <p-column field="id" header="#" [sortable]="true"></p-column>
     <p-column field="titulo" header="Título" [sortable]="true"></p-column>
     <p-column field="questoes.length" header="Qtde questões" [sortable]="true"></p-column>
+    <p-column field="dataInicio" header="A partir de:" [sortable]="true"></p-column>
+    <p-column field="dataFim" header="Até:" [sortable]="true"></p-column>
     <p-footer>
         <div class="ui-helper-clearfix" style="width:100%">
         <button icon="fa-plus" style="float:right" class="btn btn-success"  routerLink="/criar-lista">+Lista</button>

@@ -22,8 +22,8 @@ dragdrop="true" dragdropScope="questoes" sourceFilterPlaceholder="Procure por ti
 
 Selecione os alunos : <br><br>
 
-<p-pickList [source]="alunos" [target]="listaQuestoes.alunos" sourceHeader="Todos os alunos" targetHeader="Alunos selecionados" [responsive]="true" filterBy="disciplina" 
-dragdrop="true" dragdropScope="alunos" sourceFilterPlaceholder="Procure por disciplina" targetFilterPlaceholder="Procure por disciplina" [sourceStyle]="{'height':'200px'}" [targetStyle]="{'height':'200px'}" required>
+<p-pickList [source]="alunos" [target]="listaQuestoes.alunos" sourceHeader="Todos alunos" targetHeader="Aluno(s) selecionado(s)" [responsive]="true" filterBy="nomeCompleto" 
+dragdrop="true" dragdropScope="alunos" sourceFilterPlaceholder="Procure por turma" targetFilterPlaceholder="Procure por turma" [sourceStyle]="{'height':'200px'}" [targetStyle]="{'height':'200px'}" required>
     <ng-template let-aluno pTemplate="item">
         <div class="ui-helper-clearfix">
             <div style="font-size:14px;float:right;margin:15px 5px 0 0">{{aluno.nomeCompleto}}</div>
@@ -69,11 +69,9 @@ dragdrop="true" dragdropScope="alunos" sourceFilterPlaceholder="Procure por disc
 <br>
 
 <br><br>
-<button class="btn btn-success" style="float:left" [disabled]="!meuForm.valid" (click)="salvar()">Salvar e Criar nova</button>
-<button class="btn btn-success" style="float:right" [disabled]="!meuForm.valid" routerLink="/listas-questoes-crud"(click)="salvar()">Salvar e Listar</button>
-<button class="btn btn-danger"  [disabled]="!meuForm.valid" routerLink="/listas-questoes-crud"(click)="deletar()">Deletar</button>
+
+<button class="btn btn-success" [disabled]="!meuForm.valid" (click)="salvar()">Salvar Lista</button>
 </form>
 <p-growl [(value)]="msgs"></p-growl>
 
 </div>
-

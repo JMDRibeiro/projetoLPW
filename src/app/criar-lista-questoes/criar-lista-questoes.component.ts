@@ -54,14 +54,28 @@ export class CriarListaQuestoesComponent implements OnInit {
         this.listaQuestoes.questoes.push(questao);
     }
     this.listaQuestoes.professorAdministrador = this.usuarioService.usuarioLogado;
+   console.log("THIS");
    console.log(this.listaQuestoes);
-   if(this.listaQuestoes.checarValidadeData()==false){
+  if(this.listaQuestoes.id >=0){
+      this.listaQuestoesService.update(this.listaQuestoes);
+      this.router.navigate(['/listas-questoes-crud']);
+  }else{
+      this.listaQuestoesService.insert(this.listaQuestoes);
+      this.router.navigate(['/listas-questoes-crud']);
+  }
+  
+  /* if(this.listaQuestoes.checarValidadeData()==false){
          this.msgs=[];
     this.msgs.push({severity:'error', summary:'Data inválida', detail:'Verifique as datas.'});
    }else{
+<<<<<<< HEAD
      this.listaQuestoesService.insert(this.listaQuestoes);
      this.listaQuestoes = new ListaQuestoes();
    }  
+=======
+     
+   }  
+   */
   }
 
   deletar(){

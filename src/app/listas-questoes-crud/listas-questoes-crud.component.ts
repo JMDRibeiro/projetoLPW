@@ -16,7 +16,6 @@ export class ListasQuestoesCrudComponent implements OnInit {
   listaQuestoes:ListaQuestoes;
 
   constructor(private listaQuestoesService:ListaQuestoesService,private usuarioService:UsuarioService,private router: Router) { 
-    console.log(this.usuarioService.usuarioLogado);
     this.listasQuestoes = this.listaQuestoesService.listAllByProfessor(this.usuarioService.usuarioLogado);
     console.log(this.listasQuestoes);
   }
