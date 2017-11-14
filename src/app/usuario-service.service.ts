@@ -28,6 +28,8 @@ export class UsuarioService {
     alunoTeste1.nomeUsuario = "JMDRS";                        alunoTeste2.nomeUsuario = "Vanessinha Magali";
     alunoTeste1.senha = "123";                                alunoTeste2.senha = "123";
     alunoTeste1.tipo = 0;                                     alunoTeste2.tipo = 0;
+    alunoTeste1.disciplina = '3TILPW';                        alunoTeste2.disciplina = '3TIADS'; 
+
 
     alunoTeste3.email =  "bia@gmail.com";              alunoTeste4.email =  "emely.melo@gmail.com";
     alunoTeste3.login = "biaGus";                              alunoTeste4.login = "emyLaj";
@@ -35,6 +37,7 @@ export class UsuarioService {
     alunoTeste3.nomeUsuario = "Bia Engenheira";                        alunoTeste4.nomeUsuario = "Emely Grey";
     alunoTeste3.senha = "123";                                alunoTeste4.senha = "123";
     alunoTeste3.tipo = 0;                                     alunoTeste4.tipo = 0;
+    alunoTeste3.disciplina = '3TIADS';                        alunoTeste4.disciplina = '3TILPW'; 
 
     alunoTeste5.email =  "gusmao@gmail.com";              alunoTeste6.email =  "evra@gmail.com";
     alunoTeste5.login = "gusGus";                              alunoTeste6.login = "evaSj";
@@ -42,6 +45,7 @@ export class UsuarioService {
     alunoTeste5.nomeUsuario = "Capitão";                        alunoTeste6.nomeUsuario = "Evinha dos TI";
     alunoTeste5.senha = "123";                                alunoTeste6.senha = "123";
     alunoTeste5.tipo = 0;                                     alunoTeste6.tipo = 0;
+    alunoTeste5.disciplina = '3TIMAT';                        alunoTeste6.disciplina = '3TILPW'; 
 
     alunoTeste7.email =  "milena@gmail.com";              alunoTeste8.email =  "muke@gmail.com";
     alunoTeste7.login = "mihGus";                              alunoTeste8.login = "johPeq";
@@ -49,6 +53,7 @@ export class UsuarioService {
     alunoTeste7.nomeUsuario = "Milenária";                        alunoTeste8.nomeUsuario = "Joh Jong Un";
     alunoTeste7.senha = "123";                                alunoTeste8.senha = "123";
     alunoTeste7.tipo = 0;                                     alunoTeste8.tipo = 0;
+    alunoTeste7.disciplina = '3TILPW';                        alunoTeste8.disciplina = '3TIADS'; 
 
     alunoTeste9.email =  "pedrao@gmail.com";              alunoTeste10.email =  "marcelino@gmail.com";
     alunoTeste9.login = "pedGus";                              alunoTeste10.login = "marGus";
@@ -56,7 +61,7 @@ export class UsuarioService {
     alunoTeste9.nomeUsuario = "Capivara comprometida";        alunoTeste10.nomeUsuario = "Marcelino dos teclados";
     alunoTeste9.senha = "123";                                alunoTeste10.senha = "123";
     alunoTeste9.tipo = 0;                                     alunoTeste10.tipo = 0;
-
+    alunoTeste9.disciplina = '3TIMAT';                        alunoTeste10.disciplina = '3TILPW'; 
 
     alunoTeste11.email =  "joh@gmail.com";              
     alunoTeste11.login = "johGus";                         
@@ -64,6 +69,7 @@ export class UsuarioService {
     alunoTeste11.nomeUsuario = "Cap. Iaw Brow";        
     alunoTeste11.senha = "123";                                
     alunoTeste11.tipo = 0; 
+    alunoTeste11.disciplina = '3TIMAT';
 
     this.insert(professorTeste1); this.insert(professorTeste2);
     this.insert(alunoTeste1);this.insert(alunoTeste2);this.insert(alunoTeste3);this.insert(alunoTeste4);

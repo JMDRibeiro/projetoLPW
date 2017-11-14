@@ -30,7 +30,6 @@ export class CabecalhoComponent implements OnInit {
       {label: 'Questões', routerLink:['/listar-questoes/responder']  },
       {label: 'Questões corrigidas', routerLink:['/corrigidas'] },
       {label: 'Listas de questões', routerLink:['/listar-listas']  },
-      {label: 'Atividades', routerLink:['/listar-todas'] },
       {label: 'Materiais', icon: 'fa-book',routerLink:['/home']},
       {label: 'Perfil', icon: 'fa-support',routerLink:['/perfil']},
       {label: 'Fale conosco', icon: 'fa-twitter',routerLink:['/home']},

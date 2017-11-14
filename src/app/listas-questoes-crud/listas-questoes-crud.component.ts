@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ListaQuestoesService} from '../lista-questoes.service';
+import {UsuarioService} from '../usuario-service.service';
 import { ListaQuestoes} from '../models/ListaQuestoes';
 import { Router } from '@angular/router';
 
@@ -14,8 +15,9 @@ export class ListasQuestoesCrudComponent implements OnInit {
   listasQuestoes:ListaQuestoes[] = [];
   listaQuestoes:ListaQuestoes;
 
-  constructor(private listaQuestoesService:ListaQuestoesService,private router: Router) { 
-    this.listasQuestoes = this.listaQuestoesService.listAll();
+  constructor(private listaQuestoesService:ListaQuestoesService,private usuarioService:UsuarioService,private router: Router) { 
+    console.log(this.usuarioService.usuarioLogado);
+    this.listasQuestoes = this.listaQuestoesService.listAllByProfessor(this.usuarioService.usuarioLogado);
     console.log(this.listasQuestoes);
   }
 

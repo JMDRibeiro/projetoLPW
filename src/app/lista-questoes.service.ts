@@ -3,18 +3,21 @@ import { ListaQuestoes } from './models/ListaQuestoes';
 import { Questao } from './models/Questao';
 import { Usuario } from './models/Usuario';
 import { QuestaoService } from './questao.service';
+import { UsuarioService } from './usuario-service.service';
+
 
 @Injectable()
 export class ListaQuestoesService {
   id : number = 0;
   listasQuestoes : ListaQuestoes[] = [];
-   constructor(private questaoService:QuestaoService) { 
+   constructor(private questaoService:QuestaoService, private usuarioService:UsuarioService) { 
      let listaQuestoes1 : ListaQuestoes = new ListaQuestoes();
      let listaQuestoes2 : ListaQuestoes = new ListaQuestoes();
      let listaQuestoes3 : ListaQuestoes = new ListaQuestoes();
-     listaQuestoes1.titulo = "Teste1";
-     listaQuestoes2.titulo = "Teste2";
-     listaQuestoes3.titulo = "Teste3";
+     let usuarioLaranja : Usuario = new Usuario();usuarioLaranja.id=1;
+     listaQuestoes1.titulo = "Teste1"; listaQuestoes1.professorAdministrador = this.usuarioService.getById(usuarioLaranja);usuarioLaranja.id=2;
+     listaQuestoes2.titulo = "Teste2"; listaQuestoes2.professorAdministrador = this.usuarioService.getById(usuarioLaranja);usuarioLaranja.id=1;
+     listaQuestoes3.titulo = "Teste3";listaQuestoes3.professorAdministrador = this.usuarioService.getById(usuarioLaranja);
      let questao:Questao = new Questao();
      questao.id = 1;
      listaQuestoes1.questoes.push(this.questaoService.getById(questao));
@@ -62,6 +65,18 @@ export class ListaQuestoesService {
     return listasAluno;
   }
 
+  listAllByProfessor(professor:Usuario){
+    let listasProfessor:ListaQuestoes[] = [];
+    for(let i:number =0;i<this.listasQuestoes.length;i++){
+        if(this.professorEstaNaLista(this.listasQuestoes[i],professor)){
+          listasProfessor.push(this.listasQuestoes[i]);
+        }
+
+    }
+    console.log("Listando todas as Questões do professor"+professor.nomeCompleto +"> Total :\n" + listasProfessor);
+    return listasProfessor;
+  }
+
   update(listaQuestao:ListaQuestoes){
       console.log("Atualizando Questão = "+listaQuestao);
       let posicao = this.findListaQuestao(listaQuestao);
@@ -105,6 +120,37 @@ export class ListaQuestoesService {
         }
     }
     return estaNaLista;
+  }
+
+   professorEstaNaLista(lista:ListaQuestoes,professor:Usuario){
+    let estaNaLista:boolean = false;
+    console.log(lista);
+    console.log(professor);
+    if(lista.professorAdministrador.id == professor.id){
+       estaNaLista = true;
+    }
+    return estaNaLista;
+  }
+
+  questoesNaoEstaoNaLista(lista:ListaQuestoes){
+    let questoes:Questao[] = this.questaoService.listAll();
+    let questoesNaoEstaoNaLista:Questao[] = [];
+    for(let i:number=0;i<questoes.length;i++){
+      if(!this.questaoEstaNaLista(questoes[i],lista)){
+        questoesNaoEstaoNaLista.push(questoes[i]);
+      }
+    }
+    return questoesNaoEstaoNaLista;
+  }
+
+  questaoEstaNaLista(questao:Questao,lista:ListaQuestoes){
+    let estaNaLista:boolean = false;
+    for(let i:number=0;i<lista.questoes.length;i++){
+        if(lista.questoes[i].id==questao.id){
+            estaNaLista = true;
+        }
+  }
+  return estaNaLista;
   }
 }
 

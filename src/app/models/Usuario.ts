@@ -6,4 +6,5 @@ export class Usuario{
     senha : String;
     login : String;
     tipo : number;
+    disciplina : String;
 }

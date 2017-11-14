@@ -38,8 +38,9 @@ export class CriarListaQuestoesComponent implements OnInit {
    console.log(this.listaQuestoes);
    if(this.listaQuestoes == undefined){
       this.listaQuestoes = new ListaQuestoes();
+   }else{
+      this.questoes = this.listaQuestoesService.questoesNaoEstaoNaLista(this.listaQuestoes);
    }    
-    console.log(this.alunos);
   }
   salvar(){
     console.log("Total selecionado: "+this.selectedQuestionsId.length);
@@ -52,14 +53,19 @@ export class CriarListaQuestoesComponent implements OnInit {
         console.log(questao);
         this.listaQuestoes.questoes.push(questao);
     }
+    this.listaQuestoes.professorAdministrador = this.usuarioService.usuarioLogado;
    console.log(this.listaQuestoes);
    if(this.listaQuestoes.checarValidadeData()==false){
          this.msgs=[];
     this.msgs.push({severity:'error', summary:'Data inválida', detail:'Verifique as datas.'});
    }else{
      this.listaQuestoesService.insert(this.listaQuestoes);
-     this.router.navigate(['/listas-questoes-crud']);
+     this.listaQuestoes = new ListaQuestoes();
    }  
-   
   }
+
+  deletar(){
+      this.listaQuestoesService.delete(this.listaQuestoes);
+  }
+
 }
