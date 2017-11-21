@@ -18,7 +18,8 @@ import { ListaQuestoesAlunosComponent} from './lista-questoes-alunos/lista-quest
 import { InserirTurmaComponent } from './inserir-turma/inserir-turma.component';
 import { ListarTodasCrudTurmaComponent } from './listar-todas-crud-turma/listar-todas-crud-turma.component';
 import { GerenciarTagsComponent } from './gerenciar-tags/gerenciar-tags.component';
-
+import { ListarDadosAlunosComponent} from './listar-dados-alunos/listar-dados-alunos.component';
+import { DadosAlunoComponent} from './dados-aluno/dados-aluno.component';
 
 import {ModuleWithProviders} from '@angular/core'
 
@@ -50,7 +51,9 @@ const APP_ROTAS:Routes = [
     {path: 'editar-lista-questoes/:id' , component: CriarListaQuestoesComponent},
     {path: 'listar-listas' , component: ListarListasAlunosComponent},
     {path: 'lista-questoes-aluno/:id' , component: ListaQuestoesAlunosComponent},
-
+    {path: 'listar-dados-alunos' , component: ListarDadosAlunosComponent},
+    {path: 'dados-aluno/:id' , component: DadosAlunoComponent},
+    {path: 'gerenciar-tags' , component: GerenciarTagsComponent},
 ];
 
 export const rota : ModuleWithProviders = RouterModule.forRoot(APP_ROTAS);

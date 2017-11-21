@@ -59,6 +59,16 @@ export class CabecalhoComponent implements OnInit {
                     {label: 'Inserir turmas',routerLink:['/turma/inserir']},
                 ]
       }, 
+      {
+                label: 'Relatórios', icon: 'fa-line-chart',
+                items: [
+                    {label: 'Dados dos turmas', routerLink:['/listar-dados-alunos'] },
+                ]
+      }, 
+       {
+                label: 'Tags', icon: 'fa-flag',routerLink:['/gerenciar-tags']
+      },
+      
       //fa-book ; fa-graduation-cap
       {label: 'Materiais', icon: 'fa-folder-open',routerLink:['/login']},
       {label: 'Perfil', icon: 'fa-support',routerLink:['/perfil']},   

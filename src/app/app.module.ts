@@ -55,6 +55,8 @@ import {ChartModule} from 'primeng/primeng';
 import { InserirTurmaComponent } from './inserir-turma/inserir-turma.component';
 import { ListarTodasCrudTurmaComponent } from './listar-todas-crud-turma/listar-todas-crud-turma.component';
 import { GerenciarTagsComponent } from './gerenciar-tags/gerenciar-tags.component';
+import { ListarDadosAlunosComponent } from './listar-dados-alunos/listar-dados-alunos.component';
+import { DadosAlunoComponent } from './dados-aluno/dados-aluno.component';
 
 
 @NgModule({
@@ -81,6 +83,8 @@ import { GerenciarTagsComponent } from './gerenciar-tags/gerenciar-tags.componen
     InserirTurmaComponent,
     ListarTodasCrudTurmaComponent,
     GerenciarTagsComponent,
+    ListarDadosAlunosComponent,
+    DadosAlunoComponent,
     
     
   ],

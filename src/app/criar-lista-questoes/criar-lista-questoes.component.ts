@@ -35,16 +35,11 @@ export class CriarListaQuestoesComponent implements OnInit {
 
    this.listaQuestoes.id = this.route.snapshot.params['id'];
    this.listaQuestoes = this.listaQuestoesService.getById(this.listaQuestoes);
-   console.log(this.listaQuestoes);
    if(this.listaQuestoes == undefined){
       this.listaQuestoes = new ListaQuestoes();
-   }else{
-      this.questoes = this.listaQuestoesService.questoesNaoEstaoNaLista(this.listaQuestoes);
-      this.alunos = this.listaQuestoesService.alunosNaoEstaoNaLista(this.listaQuestoes);
    }    
   }
   salvar(){
-    console.log("Total selecionado: "+this.selectedQuestionsId.length);
     for(let i:number=0;i<this.selectedQuestionsId.length;i++){
         let questao = new Questao();
         console.log("Pos:"+i);
@@ -54,7 +49,6 @@ export class CriarListaQuestoesComponent implements OnInit {
         console.log(questao);
         this.listaQuestoes.questoes.push(questao);
     }
-    this.listaQuestoes.professorAdministrador = this.usuarioService.usuarioLogado;
    console.log("THIS");
    console.log(this.listaQuestoes);
   if(this.listaQuestoes.id >=0){
@@ -69,18 +63,8 @@ export class CriarListaQuestoesComponent implements OnInit {
          this.msgs=[];
     this.msgs.push({severity:'error', summary:'Data inválida', detail:'Verifique as datas.'});
    }else{
-<<<<<<< HEAD
-     this.listaQuestoesService.insert(this.listaQuestoes);
-     this.listaQuestoes = new ListaQuestoes();
-   }  
-=======
      
    }  
    */
   }
-
-  deletar(){
-      this.listaQuestoesService.delete(this.listaQuestoes);
-  }
-
 }
