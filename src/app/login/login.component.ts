@@ -15,10 +15,17 @@ import {Message} from 'primeng/components/common/api';
 export class LoginComponent implements OnInit {
   entrar:boolean;
   msgs: Message[] = [];
-  usuario : Usuario = new Usuario();
+  entrada: String =  "";
+  senha: String =  "";
+  usuario:Usuario = new Usuario();
 
   constructor(private usuarioService:UsuarioService, private router: Router) {
      this.entrar = false;
+     let usuarios:Usuario[] = [];
+     this.usuarioService.listAllOnFireBase().subscribe(questoes => {
+        console.log(questoes);
+    });
+    
 
    }
 
@@ -27,13 +34,11 @@ export class LoginComponent implements OnInit {
     }
 
   verficarUsuario(){
-    let existeUsuario : boolean;
-    if(!this.usuarioService.autenticarUsuario(this.usuario)){
+    if(!this.usuarioService.autenticarUsuario(this.entrada,this.senha)){
         this.showLoginInexistente();
     }else{
-        this.usuario = this.usuarioService.getUsuarioByLogin(this.usuario);
+        this.usuario = this.usuarioService.getUsuarioByTupla(this.entrada,this.senha);
         this.usuarioService.usuarioLogado = this.usuario;
-        console.log(this.usuario);
         this.router.navigate(['/home',this.usuario.id]);
     }
   }
@@ -44,3 +49,4 @@ export class LoginComponent implements OnInit {
   }
 
 }
+

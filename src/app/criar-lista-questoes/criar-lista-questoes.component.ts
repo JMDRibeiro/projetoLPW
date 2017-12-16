@@ -25,7 +25,7 @@ export class CriarListaQuestoesComponent implements OnInit {
   listaQuestoes:ListaQuestoes = new ListaQuestoes();
   questoes:Questao[];
   alunos:Usuario[];
-  selectedQuestionsId: number[] = [];
+  selectedQuestionsId: string[] = [];
 
   constructor(private questaoService:QuestaoService,private usuarioService:UsuarioService,private listaQuestoesService:ListaQuestoesService,private router: Router,private route:ActivatedRoute) { }
 
@@ -34,16 +34,16 @@ export class CriarListaQuestoesComponent implements OnInit {
     this.alunos = this.usuarioService.listAllAlunos();
 
    this.listaQuestoes.id = this.route.snapshot.params['id'];
+   
    this.listaQuestoes = this.listaQuestoesService.getById(this.listaQuestoes);
    if(this.listaQuestoes == undefined){
       this.listaQuestoes = new ListaQuestoes();
    }    
   }
   salvar(){
+    this.listaQuestoes.professorAdministrador = this.usuarioService.usuarioLogado;
     for(let i:number=0;i<this.selectedQuestionsId.length;i++){
         let questao = new Questao();
-        console.log("Pos:"+i);
-        console.log("Id:"+this.selectedQuestionsId[i]);
         questao.id = this.selectedQuestionsId[i];
         questao = this.questaoService.getById(questao);
         console.log(questao);
@@ -51,11 +51,18 @@ export class CriarListaQuestoesComponent implements OnInit {
     }
    console.log("THIS");
    console.log(this.listaQuestoes);
-  if(this.listaQuestoes.id >=0){
+   console.log("SOBRE O ID DAS LISTAS"+this.listaQuestoes.id!=" " || this.listaQuestoes.id==undefined);
+  if(this.listaQuestoes.id!=" " && this.listaQuestoes.id!=undefined){
+      console.log("Entramos Here");
       this.listaQuestoesService.update(this.listaQuestoes);
       this.router.navigate(['/listas-questoes-crud']);
   }else{
-      this.listaQuestoesService.insert(this.listaQuestoes);
+      console.log("Entramos HereII");
+      this.listaQuestoesService.insertOnFirebase(this.listaQuestoes).then(
+      resultado => {
+         	this.listaQuestoes.id = resultado.id;
+      });
+      console.log("id gerado pelo FireBase : "+this.listaQuestoes.id);;
       this.router.navigate(['/listas-questoes-crud']);
   }
   

@@ -11,7 +11,7 @@ export class QuestaoRespondidaService {
     qRTeste.foiCorrigida = false;
     qRTeste.resposta = "Famos fazer o feste!";
     let questao:Questao = new Questao();
-    questao.id = 1;
+    questao.id = "1";
     qRTeste.questao = this.questaoService.getById(questao);
     this.insert(qRTeste);
    }

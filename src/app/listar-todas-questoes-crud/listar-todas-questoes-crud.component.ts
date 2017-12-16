@@ -20,7 +20,9 @@ export class ListarTodasQuestoesCRUDComponent implements OnInit {
 
   ngOnInit() {
     this.questoes = this.questaoService.listAll();
-
+    this.questaoService.listAllOnFireBase().subscribe(questoes => {
+         this.questoes = questoes;
+    });
   }
 
    showDialogToAdd() {

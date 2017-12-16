@@ -58,6 +58,9 @@ import { GerenciarTagsComponent } from './gerenciar-tags/gerenciar-tags.componen
 import { ListarDadosAlunosComponent } from './listar-dados-alunos/listar-dados-alunos.component';
 import { DadosAlunoComponent } from './dados-aluno/dados-aluno.component';
 
+import { AngularFireModule } from 'angularfire2';
+import { FireBaseConfig } from "../environments/firebase.config";
+import { AngularFirestoreModule } from "angularfire2/firestore";
 
 @NgModule({
   declarations: [
@@ -89,6 +92,8 @@ import { DadosAlunoComponent } from './dados-aluno/dados-aluno.component';
     
   ],
   imports: [
+    AngularFireModule.initializeApp(FireBaseConfig),
+   	AngularFirestoreModule.enablePersistence(),
     ChartModule,
     PickListModule,
     DialogModule,

@@ -5,27 +5,31 @@ import { Usuario } from './models/Usuario';
 import { QuestaoService } from './questao.service';
 import { UsuarioService } from './usuario-service.service';
 
+import { AngularFirestore, AngularFirestoreCollection } from "angularfire2/firestore";
+import { Observable } from "rxjs/Observable";
 
 @Injectable()
 export class ListaQuestoesService {
-  id : number = 0;
   listasQuestoes : ListaQuestoes[] = [];
-   constructor(private questaoService:QuestaoService, private usuarioService:UsuarioService) { 
+  private listasQuestoesCollection: AngularFirestoreCollection<any>;
+
+   constructor(private questaoService:QuestaoService, private usuarioService:UsuarioService,private afs: AngularFirestore) {
+     this.listasQuestoesCollection = this.afs.collection<any>("ListaQuestoes");
      let listaQuestoes1 : ListaQuestoes = new ListaQuestoes();
      let listaQuestoes2 : ListaQuestoes = new ListaQuestoes();
      let listaQuestoes3 : ListaQuestoes = new ListaQuestoes();
-     let usuarioLaranja : Usuario = new Usuario();usuarioLaranja.id=1;
-     listaQuestoes1.titulo = "Teste1"; listaQuestoes1.professorAdministrador = this.usuarioService.getById(usuarioLaranja);usuarioLaranja.id=2;
-     listaQuestoes2.titulo = "Teste2"; listaQuestoes2.professorAdministrador = this.usuarioService.getById(usuarioLaranja);usuarioLaranja.id=1;
+     let usuarioLaranja : Usuario = new Usuario();
+     listaQuestoes1.titulo = "Teste1"; listaQuestoes1.professorAdministrador = this.usuarioService.getById(usuarioLaranja);
+     listaQuestoes2.titulo = "Teste2"; listaQuestoes2.professorAdministrador = this.usuarioService.getById(usuarioLaranja);
      listaQuestoes3.titulo = "Teste3";listaQuestoes3.professorAdministrador = this.usuarioService.getById(usuarioLaranja);
      let questao:Questao = new Questao();
-     questao.id = 1;
+     questao.id = "1";
      listaQuestoes1.questoes.push(this.questaoService.getById(questao));
      listaQuestoes2.questoes.push(this.questaoService.getById(questao));
      listaQuestoes3.questoes.push(this.questaoService.getById(questao));
-     questao.id = 2;
+     questao.id = "2";
      listaQuestoes1.questoes.push(this.questaoService.getById(questao));
-     questao.id = 3;
+     questao.id = "3";
      listaQuestoes1.questoes.push(this.questaoService.getById(questao));
      listaQuestoes2.questoes.push(this.questaoService.getById(questao));
      listaQuestoes1.dataInicio = new Date();
@@ -37,17 +41,34 @@ export class ListaQuestoesService {
      listaQuestoes3.dataInicio = new Date();
      listaQuestoes3.dataFim = new Date("December 22, 2017 12:15:00");
 
-    this.insert(listaQuestoes1);
-    this.insert(listaQuestoes2);
-    this.insert(listaQuestoes3);
+    //this.insert(listaQuestoes1);
+    //this.insert(listaQuestoes2);
+    //this.insert(listaQuestoes3);
   }
 
   insert(listaQuestao:ListaQuestoes){
-      this.id++;
-      listaQuestao.id = this.id;
       this.listasQuestoes.push(listaQuestao);
       console.log("Inserção efetuada! Questao:\n"+ listaQuestao);
   }
+  insertOnFirebase(listaQuestoes:ListaQuestoes){
+    return this.listasQuestoesCollection.add(listaQuestoes.toChaveValor())
+  }
+  listAllOnFireBase(): Observable<any[]> {
+   let resultados: any[] = [];
+   let meuObservable = new Observable<any[]>(observer => {
+     this.listasQuestoesCollection.snapshotChanges().subscribe(result => {
+       result.map(documents => {
+         let id = documents.payload.doc.id;
+         let data = documents.payload.doc.data();
+         let document = { id: id, ...data };
+         resultados.push(document);
+       });
+       observer.next(resultados);
+       observer.complete();
+     }); });
+   return meuObservable;
+ }
+
   listAll(){
     console.log("Listando todas as Questões> Total :" + this.listasQuestoes.length);
     return this.listasQuestoes;

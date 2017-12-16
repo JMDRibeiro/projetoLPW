@@ -18,8 +18,8 @@ export class CadastroComponent implements OnInit {
   constructor(private usuarioService:UsuarioService) {
     this.usuario = new Usuario();
     this.tiposUsuario = [];
-    this.tiposUsuario.push({label:'Aluno', value:{id:0, name: 'Aluno', code: 'A'}});
-    this.tiposUsuario.push({label:'Professor', value:{id:1, name: 'Professor', code: 'P'}});
+    this.tiposUsuario.push({label:'Aluno', value:0});
+    this.tiposUsuario.push({label:'Professor', value:1});
 
 
    }
@@ -28,10 +28,14 @@ export class CadastroComponent implements OnInit {
   }
 
   cadastrarUsuario(){
-    this.usuario.tipo = this.tipoUsuario.value.id;
-    this.usuarioService.insert(this.usuario);
+    console.log(this.usuario.tipo);
+    let retorno = this.usuarioService.insertOnFirebase(this.usuario);
+    retorno.then(
+     resultado => {
+         	this.usuario.id = resultado.id;
+    });
+    console.log("id gerado pelo FireBase : "+this.usuario.id);
     console.log("Cadastrado!")
-    console.log(this.usuario.id);
     
   }
   showSuccess() {

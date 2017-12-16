@@ -14,6 +14,8 @@ export class HomeComponent implements OnInit {
     this.usuario.id = this.route.snapshot.params['id'];
     this.usuario = this.usuarioService.getById(this.usuario);
     console.log(this.usuario);
+    console.log("USUÁRIO LOGADO!");
+    console.log(this.usuarioService.usuarioLogado);
     if(this.usuario==undefined){
       this.usuario = new Usuario();
       this.usuario.nomeUsuario="Fulano";

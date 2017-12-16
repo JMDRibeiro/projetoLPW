@@ -61,6 +61,9 @@ export class ListarTodasQuestoesComponent implements OnInit {
     //this.questaoService.insert(this.questao3);
    
     this.questoes = this.questaoService.listAll();
+    this.questaoService.listAllOnFireBase().subscribe(usuario => {
+        console.log("Qtde "+usuario.length);
+    });
     
   }
 

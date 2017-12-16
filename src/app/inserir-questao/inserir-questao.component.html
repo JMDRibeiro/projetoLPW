@@ -36,9 +36,9 @@ Selecione o nivel de dificuldade:
 <br><br>
 <input  placeholder="Qual seria a dica para responder a Questão" type="text" class="input form-control"  type="text" name="dica" [(ngModel)]="questao.dica" required><br>
 <!--Quando a Questão estiver completa, mudar a cor dos botões para verde -->
-<button class="btn btn-success" style="float:left" [disabled]="!meuForm.valid" (click)="salvar()">Salvar e Criar nova</button>
-<button class="btn btn-success" style="float:right" [disabled]="!meuForm.valid" routerLink="/listar-todas-crud"(click)="salvar()">Salvar e Listar</button>
-<button class="btn btn-danger" style="float:none;text-center" [disabled]="!meuForm.valid" routerLink="/listar-todas-crud"(click)="deletar()" *ngIf="this.questao.id>=0">Deletar</button>
+<button class="btn btn-success" style="float:left" [disabled]="!meuForm.valid" (click)="salvar()">{{funcionalidade}} e Criar nova</button>
+<button class="btn btn-success" style="float:right" [disabled]="!meuForm.valid" routerLink="/listar-todas-crud"(click)="salvar()">{{funcionalidade}} e Listar</button>
+<button class="btn btn-danger" style="float:center;text-center"  routerLink="/listar-todas-crud"(click)="deletar()" *ngIf="this.questao.id!=''">Deletar</button>
 <p-growl [(value)]="msgs"></p-growl>
 </form>
 </div>

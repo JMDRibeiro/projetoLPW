@@ -1,6 +1,6 @@
 export class Questao{
 
-    id : number;
+    id : string;
     nivelDificuldade : number;
     enunciado : String;
     dica : String;
@@ -40,6 +40,19 @@ export class Questao{
 		retorno+=this.retornosEsperados[1].entrada+"//"+this.retornosEsperados[1].saida+"\n";
 		retorno+=this.retornosEsperados[2].entrada+"//"+this.retornosEsperados[2].saida+"\n";
 		return retorno;
+	}
+	toChaveValor(){
+		let chaveValor = {nivelDificuldade:this.nivelDificuldade,
+		enunciado:this.enunciado,
+		dica:this.dica,
+		retornosEsperados:[
+			{entrada:this.retornosEsperados[0].entrada, saida:this.retornosEsperados[0].saida},
+			{entrada:this.retornosEsperados[1].entrada, saida:this.retornosEsperados[1].saida},
+			{entrada:this.retornosEsperados[2].entrada, saida:this.retornosEsperados[2].saida}
+		],
+		titulo:this.titulo};
+		return chaveValor;
+
 	}
 	
 }

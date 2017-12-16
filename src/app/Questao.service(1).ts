@@ -49,7 +49,7 @@ export class QuestaoService {
 
   insert(questao:Questao){
       this.id++;
-      questao.id = this.id;
+      questao.id = this.id+"a ";
       this.questoes.push(questao);
       console.log("Inserção efetuada! Questao:"+ questao.titulo+" #"+questao.id);
   }

@@ -1,13 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from './models/Usuario';
+import { AngularFirestore, AngularFirestoreCollection } from "angularfire2/firestore";
+import { Observable } from "rxjs/Observable";
+
 @Injectable()
 export class UsuarioService {
 
   usuarios:Usuario[]=[];
-  id : number = 0;
   usuarioLogado:Usuario = new Usuario();
+  private usuarioCollection: AngularFirestoreCollection<any>;
 
-  constructor() { 
+  constructor(private afs:AngularFirestore) { 
+    this.usuarioCollection = this.afs.collection<any>("Usuarios");
+    this.listAllOnFireBase().subscribe(resultado => {
+        this.usuarios = resultado;
+    });
+    /*
     let professorTeste1 = new Usuario();
     let alunoTeste1 = new Usuario();
     let professorTeste2 = new Usuario();
@@ -20,7 +28,7 @@ export class UsuarioService {
     professorTeste1.nomeCompleto = "Leonardo Soares e Silva";  professorTeste2.nomeCompleto = "David Alain do Nascimento";
     professorTeste1.nomeUsuario = "LSoares";                   professorTeste2.nomeUsuario = "DavAlain"; 
     professorTeste1.senha = "123";                             professorTeste2.senha = "123"; 
-    professorTeste1.tipo = 1;                                  professorTeste2.tipo = 1; 
+    professorTeste1.tipo = 1;    professorTeste1.id = "1";     professorTeste2.tipo = 1; 
 
     alunoTeste1.email =  "joaoifpe15@gmail.com";              alunoTeste2.email =  "van@gmail.com";
     alunoTeste1.login = "jdr55";                              alunoTeste2.login = "vanCap";
@@ -74,11 +82,13 @@ export class UsuarioService {
     this.insert(professorTeste1); this.insert(professorTeste2);
     this.insert(alunoTeste1);this.insert(alunoTeste2);this.insert(alunoTeste3);this.insert(alunoTeste4);
     this.insert(alunoTeste5);this.insert(alunoTeste6);this.insert(alunoTeste7);this.insert(alunoTeste8);
-    this.insert(alunoTeste9);this.insert(alunoTeste10);this.insert(alunoTeste11);
+    this.insert(alunoTeste9);this.insert(alunoTeste10);this.insert(alunoTeste11);*/
   }
+  insertOnFirebase(usuario:Usuario){
+    return this.usuarioCollection.add(usuario.toChaveValor());
+  }
+ 
  insert(usuario:Usuario){
-      this.id++;
-      usuario.id = this.id;
       this.usuarios.push(usuario);
       console.log(usuario);
   }
@@ -107,20 +117,6 @@ export class UsuarioService {
       }
       return posicao;
   }
-
-  getUsuarioByLogin(usuario:Usuario){
-    
-    let posicao:number = -1;
-      for(let i:number=0;i<this.usuarios.length;i++){
-          if(usuario.login == this.usuarios[i].login){
-            posicao = i;
-          }
-      }
-    
-    usuario = this.usuarios[posicao];
-    return usuario;
-  }
-
   getById(usuario:Usuario){
     
     let posicao:number = -1;
@@ -134,14 +130,25 @@ export class UsuarioService {
     return usuario;
   }
 
-  autenticarUsuario(usuario:Usuario){
+  autenticarUsuario(entrada:String,senha:String){
     let podeLogar:boolean = false;  
     for(let i:number=0;i<this.usuarios.length;i++){
-        if(this.usuarios[i].login==usuario.login && this.usuarios[i].senha==usuario.senha){
+       
+        if((this.usuarios[i].nomeUsuario==entrada || this.usuarios[i].email==entrada) && this.usuarios[i].senha==senha){
             podeLogar = true;
         }
     }
     return podeLogar;
+  }
+
+  getUsuarioByTupla(entrada:String,senha:String){
+    let user:Usuario = null;  
+    for(let i:number=0;i<this.usuarios.length;i++){
+        if((this.usuarios[i].nomeUsuario==entrada || this.usuarios[i].email==entrada) && this.usuarios[i].senha==senha){
+            user = this.usuarios[i];
+        }
+    }
+    return user;
   }
 
   listAllAlunos(){
@@ -153,5 +160,22 @@ export class UsuarioService {
     }
     return alunos;
   }
+
+  listAllOnFireBase(): Observable<any[]> {
+   let resultados: any[] = [];
+   let meuObservable = new Observable<any[]>(observer => {
+     this.usuarioCollection.snapshotChanges().subscribe(result => {
+       result.map(documents => {
+         let id = documents.payload.doc.id;
+         let data = documents.payload.doc.data();
+         let document = { id: id, ...data };
+         resultados.push(document);
+       });
+       observer.next(resultados);
+       observer.complete();
+     }); });
+   return meuObservable;
+ }
+
 }
 

@@ -4,7 +4,6 @@
 <h3 class="text-center"><strong>Todas as Questões</strong></h3><br>
 
 <p-dataTable [value]="questoes" selectionMode="single" [(selection)]="questaoSelecionada" (onRowSelect)="onRowSelect($event)" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
-    <p-column field="id" header="#" [sortable]="true"></p-column>
     <p-column field="nivelDificuldade" header="Nível de Dificuldade" [sortable]="true"></p-column>
     <p-column field="titulo" header="Título" [sortable]="true"></p-column>
     <p-column field="enunciado" header="Enunciado" [sortable]="true"></p-column>

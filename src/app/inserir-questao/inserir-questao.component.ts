@@ -15,13 +15,20 @@ import { ActivatedRoute} from '@angular/router'
 export class InserirQuestaoComponent implements OnInit {
   questao = new Questao;
   msgs: Message[] = [];
+  funcionalidade:String = "Salvar";
 
   constructor(private questaoService : QuestaoService, private messageService: MessageService,private route:ActivatedRoute) { 
   }
 
   ngOnInit() {
       this.questao.id = this.route.snapshot.params['id'];
-      this.questao = this.questaoService.getById(this.questao);
+      console.log(this.questao.id);
+      console.log(this.questao.id==undefined);
+      if(!(this.questao.id=="")){
+         this.funcionalidade = "Atualizar";
+         this.questao = this.questaoService.getByIdOnFireBase(this.questao);
+      }
+    
       console.log(this.questao);
       if(this.questao == undefined){
           this.questao = new Questao();
@@ -29,8 +36,13 @@ export class InserirQuestaoComponent implements OnInit {
   }
 
   salvar(){ 
-      this.questaoService.insert(this.questao);
-      //alert(this.questaoService.listAll().length);    
+    if((this.questao.id==" ")){
+      this.questaoService.insertOnFirebase(this.questao);
+    }else{
+      console.log("enterUpdate");
+      this.questaoService.updateOnFireBase(this.questao);  
+    }
+          //alert(this.questaoService.listAll().length);    
       //alert(this.questao.imprimirQuestao());
       this.showSuccess();
       this.questao = new Questao();
@@ -41,7 +53,7 @@ export class InserirQuestaoComponent implements OnInit {
         this.msgs.push({severity:'success', summary:'Questão inserida com sucesso!', detail:' '});
   }
   deletar(){
-      this.questaoService.delete(this.questao);
+      this.questaoService.deleteOnFireBase(this.questao);
   }
 
 }

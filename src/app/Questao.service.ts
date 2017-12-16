@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Questao } from './models/Questao';
+import { AngularFirestore, AngularFirestoreCollection } from "angularfire2/firestore";
+import { Observable } from "rxjs/Observable";
 
 @Injectable()
 export class QuestaoService {
@@ -8,8 +10,10 @@ export class QuestaoService {
   questao1:Questao = new Questao();
   questao2:Questao = new Questao();
   questao3:Questao = new Questao();
-  constructor() {
-    
+  private questaoCollection: AngularFirestoreCollection<any>;
+  constructor(private afs: AngularFirestore) {
+    this.questaoCollection = this.afs.collection<any>("Questoes");
+      
     this.questao1.titulo = "Bazinga!";
     this.questao1.nivelDificuldade = 1;
     this.questao1.enunciado = " Enunciado do Bazinga!";
@@ -51,9 +55,17 @@ export class QuestaoService {
    
   }
 
+  insertOnFirebase(questao:Questao){
+    this.questaoCollection.add(questao.toChaveValor()).then(
+    resultado => {
+         	questao.id = resultado.id;
+    });
+    console.log("id gerado pelo FireBase : "+questao.id);
+
+  }
   insert(questao:Questao){
       this.id++;
-      questao.id = this.id;
+      questao.id = this.id+"";
       this.questoes.push(questao);
       console.log("Inserção efetuada! Questao:"+ questao.titulo+" #"+questao.id);
   }
@@ -96,4 +108,65 @@ export class QuestaoService {
     return questao;
   }
 
+  getByIdOnFireBase(questao:Questao){
+     let questaoObservable:Observable<any> = new Observable(observer => {
+     let doc = this.questaoCollection.doc(questao.id);
+     doc.snapshotChanges().subscribe(result => {
+       let id = result.payload.id;
+       let data = result.payload.data()
+       console.log("Oh o data");
+       console.log(data);
+       let document = { id: id, ...data };
+       observer.next(document);
+       observer.complete();
+     });
+   });
+   questaoObservable.subscribe(
+     resultadoObservable => {
+    	questao.id = resultadoObservable.id;
+      questao.enunciado = resultadoObservable.enunciado;
+      questao.dica = resultadoObservable.dica;
+      questao.nivelDificuldade = resultadoObservable.nivelDificuldade;
+      questao.retornosEsperados = resultadoObservable.retornosEsperados;
+      questao.titulo = resultadoObservable.titulo;
+  }
+  )
+  console.log("Oh a questão!");
+  console.log(questao);
+  /*
+  let  q:Questao = new Questao();
+  q.id = questao.id;
+  q.enunciado = questao.enunciado;
+  q.dica = questao.dica;
+  q.nivelDificuldade = questao.nivelDificuldade;
+  q.retornosEsperados = questao.retornosEsperados;*/
+  return questao;
+  }
+
+
+listAllOnFireBase(): Observable<any[]> {
+   let resultados: any[] = [];
+   let meuObservable = new Observable<any[]>(observer => {
+     this.questaoCollection.snapshotChanges().subscribe(result => {
+       result.map(documents => {
+         let id = documents.payload.doc.id;
+         let data = documents.payload.doc.data();
+         let document = { id: id, ...data };
+         resultados.push(document);
+       });
+       observer.next(resultados);
+       observer.complete();
+     }); });
+   return meuObservable;
+ }
+ deleteOnFireBase(funcionario): Promise<void> {
+   return this.questaoCollection.doc(funcionario.id).delete();
+ }
+
+ updateOnFireBase(questao:Questao){
+   this.questaoCollection.add(questao.toChaveValor()).then(
+   resultado => {
+     	questao.id = resultado.id;
+    });
+ }
 }

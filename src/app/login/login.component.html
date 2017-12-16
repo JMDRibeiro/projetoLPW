@@ -6,8 +6,8 @@
 <router-outlet></router-outlet>
 <h2><strong>Entre e faça hoje seu RPG!</strong></h2><br>
 <form #meuForm="ngForm" class="form-group">
-    <input type="text"class="input form-control" placeholder="Email ou Nickname" type="text" name="nomeCompleto" [(ngModel)] = "usuario.login" required><br>
-    <input type="text"class="input form-control" placeholder="Senha" type="password" name="titulo" [(ngModel)] = "usuario.senha" required><br>
+    <input type="text"class="input form-control" placeholder="Email ou Nickname" type="text" name="nomeCompleto" [(ngModel)] = "entrada" required><br>
+    <input type="text"class="input form-control" placeholder="Senha" type="password" name="titulo" [(ngModel)] = "senha" required><br>
     <button class="btn btn-success" [disabled]="(meuForm.valid && this.entrar)" (click)="verficarUsuario()">Entre</button>
 </form>
 <p-growl [(value)]="msgs"></p-growl>
