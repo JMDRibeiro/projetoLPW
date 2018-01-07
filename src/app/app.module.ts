@@ -1,11 +1,13 @@
+//básicos
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { FormsModule} from '@angular/forms';
-import {MegaMenuModule} from 'primeng/primeng';
-
 import {rota} from './app.rotas';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+//módulos primeng
+import {MegaMenuModule} from 'primeng/primeng';
 import { CalendarModule} from 'primeng/primeng';
 import {CheckboxModule} from 'primeng/primeng';
 import {DropdownModule} from 'primeng/primeng';
@@ -18,6 +20,18 @@ import {InputTextareaModule} from 'primeng/primeng';
 import {InputMaskModule} from 'primeng/primeng';
 import {PanelMenuModule} from 'primeng/primeng';
 import {TabMenuModule} from 'primeng/primeng';
+import {RadioButtonModule} from 'primeng/primeng';
+import {MenubarModule} from 'primeng/primeng';
+import {ListboxModule} from 'primeng/primeng';
+import {DataTableModule,SharedModule} from 'primeng/primeng';
+import {DialogModule} from 'primeng/primeng';
+import {GrowlModule} from 'primeng/primeng';
+import {MessageService} from 'primeng/components/common/messageservice';
+import {PickListModule} from 'primeng/primeng';
+import {ChartModule} from 'primeng/primeng';
+
+
+//outros componentes
 import { InserirQuestaoComponent } from './inserir-questao/inserir-questao.component';
 import { CabecalhoComponent } from './cabecalho/cabecalho.component';
 import { ListarTodasQuestoesCRUDComponent } from './listar-todas-questoes-crud/listar-todas-questoes-crud.component';
@@ -28,19 +42,6 @@ import { ResponderQuestaoComponent } from './responder-questao/responder-questao
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { CorrigirQuestoesComponent } from './corrigir-questoes/corrigir-questoes.component';
-import {RadioButtonModule} from 'primeng/primeng';
-import {MenubarModule} from 'primeng/primeng';
-import {ListboxModule} from 'primeng/primeng';
-import { QuestaoService } from './questao.service';
-import {DataTableModule,SharedModule} from 'primeng/primeng';
-import {DialogModule} from 'primeng/primeng';
-import {GrowlModule} from 'primeng/primeng';
-import {UsuarioService} from './usuario-service.service';
-import {QuestaoRespondidaService} from './questao-respondida.service';
-import {TurmaService} from './turma.service';
-import {TagService} from './tag.service';
-
-import {MessageService} from 'primeng/components/common/messageservice';
 import { ListarQuestoesComponent } from './listar-questoes/listar-questoes.component';
 import { ListarQuestoesRespondidasComponent } from './listar-questoes-respondidas/listar-questoes-respondidas.component';
 import { ListarCorrigidasComponent } from './listar-corrigidas/listar-corrigidas.component';
@@ -50,14 +51,21 @@ import {ListaQuestoesService} from './lista-questoes.service';
 import { ListarListasQuestoesComponent } from './listar-listas-questoes/listar-listas-questoes.component';
 import { ListarListasAlunosComponent } from './listar-listas-alunos/listar-listas-alunos.component';
 import { ListaQuestoesAlunosComponent } from './lista-questoes-alunos/lista-questoes-alunos.component';
-import {PickListModule} from 'primeng/primeng';
-import {ChartModule} from 'primeng/primeng';
 import { InserirTurmaComponent } from './inserir-turma/inserir-turma.component';
 import { ListarTodasCrudTurmaComponent } from './listar-todas-crud-turma/listar-todas-crud-turma.component';
 import { GerenciarTagsComponent } from './gerenciar-tags/gerenciar-tags.component';
 import { ListarDadosAlunosComponent } from './listar-dados-alunos/listar-dados-alunos.component';
 import { DadosAlunoComponent } from './dados-aluno/dados-aluno.component';
 
+
+//serviços
+import {UsuarioService} from './usuario-service.service';
+import {QuestaoRespondidaService} from './questao-respondida.service';
+import {TurmaService} from './turma.service';
+import {TagService} from './tag.service';
+import { QuestaoService } from './questao.service';
+
+//firebase
 import { AngularFireModule } from 'angularfire2';
 import { FireBaseConfig } from "../environments/firebase.config";
 import { AngularFirestoreModule } from "angularfire2/firestore";
