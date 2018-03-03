@@ -1,0 +1,71 @@
+<app-cabecalho></app-cabecalho>
+
+<div class="container">
+<h3 class="display-5">Insira uma questão:</h3>
+<form #meuForm="ngForm" class="form-group">
+
+<input  placeholder="Digite o texto" type="text"class="input form-control" type="text" name="texto" [(ngModel)]="questao.texto" required><br> 
+
+Digite as alternativas e selecione a que estiver correta :   <br>
+
+<div class="form-check">
+    <div class="form-group form-inline">
+    <p-radioButton name="group1" value="0" [(ngModel)]="selectedValue" inputId="opt1"></p-radioButton><input name="textoa" placeholder="A" type="text" class="input form-control" [(ngModel)]="questao.alternativas[0].texto" required>
+    </div>
+    <div class="form-group form-inline">
+    <p-radioButton name="group1" value="1" [(ngModel)]="selectedValue" inputId="opt1"></p-radioButton><input name="textoa" placeholder="B" type="text" class="input form-control" [(ngModel)]="questao.alternativas[1].texto" required>
+    </div>
+    <div class="form-group form-inline">
+    <p-radioButton name="group1" value="2" [(ngModel)]="selectedValue" inputId="opt1"></p-radioButton><input name="textoa" placeholder="C" type="text" class="input form-control" [(ngModel)]="questao.alternativas[2].texto" required>
+    </div>
+    <div class="form-group form-inline">
+    <p-radioButton name="group1" value="3" [(ngModel)]="selectedValue" inputId="opt1"></p-radioButton><input name="textoa" placeholder="D" type="text" class="input form-control" [(ngModel)]="questao.alternativas[3].texto" required>
+    </div>
+    <div class="form-group form-inline">
+    <p-radioButton name="group1" value="4" [(ngModel)]="selectedValue" inputId="opt1"></p-radioButton><input name="textoa" placeholder="E" type="text" class="input form-control" [(ngModel)]="questao.alternativas[4].texto" required>
+    </div>
+</div>
+<br>
+
+<div class="row">
+    <div class="col-sm-4">
+      Disciplina:
+      <select name="disciplina" values="disciplinas" [(ngModel)]="disciplina" required>
+      <option *ngFor="let disciplina of disciplinas">
+              {{ disciplina.nome }}
+      </option>    
+      </select>
+    </div>
+    <div class="col-sm-4">
+      Assunto:
+      <select name="assunto" values="disciplina.assuntos" [(ngModel)]="questao.assunto" required>
+      <option *ngFor="let assunto of getAssuntos()">
+              {{ assunto.nome }}
+      </option>    
+      </select>
+    </div>
+    <div class="col-sm-4">
+      Nivel de dificuldade:
+      <select name="niveis" [(ngModel)]="questao.nivelDificuldade" required>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      </select>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-6">
+        <input  placeholder="Tempo para responder (em min)" type="text" class="input form-control"  type="number" name="tempoParaResponder" [(ngModel)]="questao.tempoParaResponder" required><br>
+    </div>
+    <div class="col-sm-6">
+        <input  placeholder="Pontuação" type="text" class="input form-control"  type="number" name="pontuacao" [(ngModel)]="questao.pontuacao" required><br>
+    </div>
+</div>
+<input  placeholder="Qual seria a dica para responder a Questão" type="text" class="input form-control"  type="text" name="dica" [(ngModel)]="questao.dica" required><br>
+<!--Quando a Questão estiver completa, mudar a cor dos botões para verde -->
+<button class="btn btn-success" style="float:left" [disabled]="!meuForm.valid" (click)="salvar()">Salvar</button>
+<!--<button class="btn btn-success" style="float:right" [disabled]="!meuForm.valid" routerLink="/listar-todas-crud"(click)="salvar()">{{funcionalidade}} e Listar</button>-->
+<p-growl [(value)]="msgs"></p-growl>
+</form>
+</div>
