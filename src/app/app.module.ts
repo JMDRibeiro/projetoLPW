@@ -31,73 +31,20 @@ import {PickListModule} from 'primeng/primeng';
 import {ChartModule} from 'primeng/primeng';
 
 
-//outros componentes
-import { InserirQuestaoComponent } from './inserir-questao/inserir-questao.component';
-import { CabecalhoComponent } from './cabecalho/cabecalho.component';
-import { ListarTodasQuestoesCRUDComponent } from './listar-todas-questoes-crud/listar-todas-questoes-crud.component';
-import { HomeComponent } from './home/home.component';
-import { CriarListaQuestoesComponent } from './criar-lista-questoes/criar-lista-questoes.component';
-import { LoginComponent } from './login/login.component';
-import { ResponderQuestaoComponent } from './responder-questao/responder-questao.component';
-import { CadastroComponent } from './cadastro/cadastro.component';
-import { PerfilComponent } from './perfil/perfil.component';
-import { CorrigirQuestoesComponent } from './corrigir-questoes/corrigir-questoes.component';
-import { ListarQuestoesComponent } from './listar-questoes/listar-questoes.component';
-import { ListarQuestoesRespondidasComponent } from './listar-questoes-respondidas/listar-questoes-respondidas.component';
-import { ListarCorrigidasComponent } from './listar-corrigidas/listar-corrigidas.component';
-import { CorrecaoComponent } from './correcao/correcao.component';
-import { ListasQuestoesCrudComponent } from './listas-questoes-crud/listas-questoes-crud.component';
-import {ListaQuestoesService} from './lista-questoes.service';
-import { ListarListasQuestoesComponent } from './listar-listas-questoes/listar-listas-questoes.component';
-import { ListarListasAlunosComponent } from './listar-listas-alunos/listar-listas-alunos.component';
-import { ListaQuestoesAlunosComponent } from './lista-questoes-alunos/lista-questoes-alunos.component';
-import { InserirTurmaComponent } from './inserir-turma/inserir-turma.component';
-import { ListarTodasCrudTurmaComponent } from './listar-todas-crud-turma/listar-todas-crud-turma.component';
-import { GerenciarTagsComponent } from './gerenciar-tags/gerenciar-tags.component';
-import { ListarDadosAlunosComponent } from './listar-dados-alunos/listar-dados-alunos.component';
-import { DadosAlunoComponent } from './dados-aluno/dados-aluno.component';
 
-
-//serviços
-import {UsuarioService} from './usuario-service.service';
-import {QuestaoRespondidaService} from './questao-respondida.service';
-import {TurmaService} from './turma.service';
-import {TagService} from './tag.service';
-import { QuestaoService } from './questao.service';
 
 //firebase
 import { AngularFireModule } from 'angularfire2';
 import { FireBaseConfig } from "../environments/firebase.config";
 import { AngularFirestoreModule } from "angularfire2/firestore";
+import { InsertQuestaoComponent } from './insert-questao/insert-questao.component';
+import { CabecalhoComponent } from './cabecalho/cabecalho.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    InserirQuestaoComponent,
-    CabecalhoComponent,
-    ListarTodasQuestoesCRUDComponent,
-    HomeComponent,
-    CriarListaQuestoesComponent,
-    LoginComponent,
-    ResponderQuestaoComponent,
-    CadastroComponent,
-    PerfilComponent,
-    CorrigirQuestoesComponent,
-    ListarQuestoesComponent,
-    ListarQuestoesRespondidasComponent,
-    ListarCorrigidasComponent,
-    CorrecaoComponent,
-    ListasQuestoesCrudComponent,
-    ListarListasQuestoesComponent,
-    ListarListasAlunosComponent,
-    ListaQuestoesAlunosComponent,
-    InserirTurmaComponent,
-    ListarTodasCrudTurmaComponent,
-    GerenciarTagsComponent,
-    ListarDadosAlunosComponent,
-    DadosAlunoComponent,
-    
-    
+    InsertQuestaoComponent,
+    CabecalhoComponent,    
   ],
   imports: [
     AngularFireModule.initializeApp(FireBaseConfig),
@@ -127,7 +74,7 @@ import { AngularFirestoreModule } from "angularfire2/firestore";
     GrowlModule,
     DropdownModule   
   ],
-  providers: [QuestaoService,UsuarioService,MessageService,QuestaoRespondidaService,ListaQuestoesService,TurmaService,TagService],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

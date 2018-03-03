@@ -1,8 +1,0 @@
-<app-cabecalho></app-cabecalho><br>
-<h4 class="text-center"><strong>{{tipoListagem}}</strong></h4><br>
-<div class="container">
-<p-dataTable [value]="questoes" selectionMode="single" [(selection)]="questaoSelecionada" (onRowSelect)="onRowSelect($event)" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
-    <p-column field="titulo" header="Título" [sortable]="true"></p-column>
-    <p-column field="enunciado" header="Enunciado" [sortable]="true"></p-column>
-</p-dataTable>
-</div>

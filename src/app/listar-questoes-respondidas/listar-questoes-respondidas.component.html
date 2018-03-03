@@ -1,8 +1,0 @@
-<app-cabecalho></app-cabecalho><br>
-<h4 class="text-center"><strong>Questões para corrigir</strong></h4><br>
-<div class="container">
-<p-dataTable [value]="getQuestoesRespondidas()" selectionMode="single" [(selection)]="questaoRespondidaSelecionada" (onRowSelect)="onRowSelect($event)" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
-    <p-column field="questao.titulo" header="Título" [sortable]="true"></p-column>
-    <p-column field="questao.enunciado" header="Enunciado" [sortable]="true"></p-column>
-</p-dataTable>
-</div>
