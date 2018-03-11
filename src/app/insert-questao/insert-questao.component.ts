@@ -3,6 +3,7 @@ import { Questao } from './../models/Questao';
 import { Disciplina } from './../models/Disciplina';
 import { Assunto } from './../models/Assunto';
 import { Alternativa } from './../models/Alternativa';
+import { QuestaoService } from '../questao.service';
 
 @Component({
   selector: 'app-insert-questao',
@@ -17,17 +18,23 @@ export class InsertQuestaoComponent implements OnInit {
   d2:Disciplina = new Disciplina(); 
   d3:Disciplina = new Disciplina(); 
   selectedValue:number;
+  questoes : Array<any>;
   
-  constructor() { 
+  constructor(private questaoService:QuestaoService) { 
     this.d1.nome = "Biologia", this.d2.nome = "Química", this.d3.nome = "Física";    
     this.assuntoD1.nome = "Ecologia";
     this.d1.assuntos.push(this.assuntoD1);
     this.disciplinas.push(this.d1), this.disciplinas.push(this.d2),this.disciplinas.push(this.d3);
     this.disciplina = new Disciplina();
     this.questao.assunto = new Assunto();
+
   }
 
   ngOnInit() {
+    console.log(this.questoes);
+  }
+  listar(){
+   this.questaoService.getUsers().subscribe(data => this.questoes = data);;
   }
   getAssuntos(){
     return this.d1.assuntos;
@@ -37,4 +44,6 @@ export class InsertQuestaoComponent implements OnInit {
     this.questao.tempoParaResponder = this.questao.tempoParaResponder*60;
     console.log(this.questao);
   }
+
+  
 }

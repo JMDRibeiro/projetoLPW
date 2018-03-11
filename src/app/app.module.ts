@@ -6,7 +6,7 @@ import { FormsModule} from '@angular/forms';
 import {rota} from './app.rotas';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-//módulos primeng
+//módulos primeng7
 import {MegaMenuModule} from 'primeng/primeng';
 import { CalendarModule} from 'primeng/primeng';
 import {CheckboxModule} from 'primeng/primeng';
@@ -30,15 +30,18 @@ import {MessageService} from 'primeng/components/common/messageservice';
 import {PickListModule} from 'primeng/primeng';
 import {ChartModule} from 'primeng/primeng';
 
-
-
-
 //firebase
 import { AngularFireModule } from 'angularfire2';
 import { FireBaseConfig } from "../environments/firebase.config";
 import { AngularFirestoreModule } from "angularfire2/firestore";
 import { InsertQuestaoComponent } from './insert-questao/insert-questao.component';
 import { CabecalhoComponent } from './cabecalho/cabecalho.component';
+
+//Serviços
+import { Http } from '@angular/http';
+import { ConnectionBackend } from '@angular/http';
+import { QuestaoService} from './questao.service';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -72,9 +75,10 @@ import { CabecalhoComponent } from './cabecalho/cabecalho.component';
     TabMenuModule,
     MenubarModule,
     GrowlModule,
-    DropdownModule   
-  ],
-  providers: [MessageService],
+    DropdownModule,
+    HttpModule
+    ],
+  providers: [MessageService,QuestaoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
